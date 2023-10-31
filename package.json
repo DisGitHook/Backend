@@ -1,0 +1,17 @@
+{
+  "name": "disgithook-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The backend for DisGitHook which handles settings &amp; webhooks",
+  "main": "index.js",
+  "author": "DisGitHook community",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-sonarjs": "^0.21.0",
+    "eslint-plugin-unicorn": "^49.0.0"
+  }
+}
