@@ -37,7 +37,7 @@ module.exports.getUserGuilds = async token => {
 	return json
 }
 
-module.exports.getAccessToken = async (userId, tokens, bot) => {
+module.exports.getAccessToken = async (userId, tokens) => {
 	if (Date.now() > tokens.expires_at) {
 		const body = new URLSearchParams({
 			client_id: botId,

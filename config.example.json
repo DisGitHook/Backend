@@ -1,0 +1,16 @@
+{
+	"botId": "1168822115810672711",
+	"botSecret": "",
+	"botToken": "",
+
+	"port": 25527,
+
+	"userAgent": "DiscordBot (https://disgithook.tomatenkuchen.com, v1.0.0)",
+
+	"db": {
+		"host": "",
+		"user": "",
+		"password": "",
+		"database": ""
+	}
+}
