@@ -1,3 +1,4 @@
+const Discord = require("discord.js")
 require("./bot.js")
 
 const { botId, botSecret, userAgent, domain, port, cookieSecret } = require("./config.json")
@@ -22,6 +23,14 @@ app.get("/servers", async (req, res) => {
 	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
 
 	const servers = await oauth.getUserServers()
+	console.log(servers)
+
+	const filtered = servers.filter(server => Discord.PermissionsBitField(server.permissions).has("ManageGuild")).map(server => ({
+		id: server.id,
+		name: server.name,
+		icon: server.icon
+	}))
+	res.send({servers: filtered})
 })
 
 app.get("/login", async (req, res) => {

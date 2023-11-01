@@ -59,16 +59,16 @@ module.exports.getAccessToken = async (userId, pool) => {
 			}
 		})
 		if (res.ok) {
-			const newtokens = await res.json()
-			newtokens.expires_at = Date.now() + newtokens.expires_in * 1000
-			newtokens.type = token.type
-			delete newtokens.expires_in
+			const newToken = await res.json()
+			newToken.expires_at = Date.now() + newToken.expires_in * 1000
+			newToken.type = token.type
+			delete newToken.expires_in
 
 			pool.query(
 				"INSERT INTO `user` (`id`, `token`, `access`, `refresh`, `expires`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `token` = ?, `access` = ?, `refresh` = ?, `expires` = ?",
-				[user.id, token, user.access_token, user.refresh_token, Date.now() + user.expires_in * 1000, token, user.access_token, user.refresh_token, Date.now() + user.expires_in * 1000]
+				[newToken.id, token, newToken.access_token, newToken.refresh_token, Date.now() + newToken.expires_in * 1000, token, newToken.access_token, newToken.refresh_token, Date.now() + newToken.expires_in * 1000]
 			)
-			return newtokens.access_token
+			return newToken.access_token
 		} else {
 			console.log("Error refreshing access token: " + res.status + " " + res.statusText)
 			const json = await res.json()
