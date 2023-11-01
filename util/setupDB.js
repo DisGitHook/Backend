@@ -24,7 +24,7 @@ pool.query(
 pool.query(
 	"CREATE TABLE IF NOT EXISTS `user` (" +
 	"`id` VARCHAR(21) NOT NULL PRIMARY KEY," +
-	"`token` VARCHAR(64) NOT NULL," +
+	"`token` VARCHAR(20) NOT NULL," +
 	"`access` VARCHAR(64) NOT NULL," +
 	"`refresh` VARCHAR(64) NOT NULL," +
 	"`expires` BIGINT NOT NULL" +

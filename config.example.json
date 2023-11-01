@@ -3,7 +3,9 @@
 	"botSecret": "",
 	"botToken": "",
 
+	"domain": "disgithook.tomatenkuchen.com",
 	"port": 25527,
+	"cookieSecret": "",
 
 	"userAgent": "DiscordBot (https://disgithook.tomatenkuchen.com, v1.0.0)",
 
