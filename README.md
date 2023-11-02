@@ -6,10 +6,21 @@ It contains the API for the website and the code for handling webhooks.
 
 ## API routes
 
-- /
-- /login
-- /logout
-- /servers
-- /server/:id (get & set settings)
-- POST /hook/:id & Authorization header
-- POST /hook/:id/:secret
+- `GET` /
+- `GET` /login
+- `GET` /logout
+- `GET` /servers
+- `GET` /servers/:id/hooks
+- `POST` /servers/:id/hooks
+- `POST` /servers/:id/hooks/:hook
+- `DELETE` /servers/:id/hooks/:hook
+- `POST` /servers/:id/hooks/:hook/regen
+
+## Webhook routes
+
+- `POST` /hook/:id & Authorization header
+- `POST` /hook/:id/:secret
+
+## Templates and webhook data
+
+All sent data is from the [GitHub webhook documentation](https://docs.github.com/de/webhooks/webhook-events-and-payloads).

@@ -1,3 +1,4 @@
+const Discord = require("discord.js")
 const { botId, botSecret, userAgent } = require("../config.json")
 
 const userCache = {}
@@ -34,9 +35,10 @@ module.exports.getUserServers = async (token, pool) => {
 	if (!res.ok) return new Error("Couldnt get guild data, failed with " + res.status + " " + res.statusText)
 
 	const json = await res.json()
-	guildCache[access] = json
+	const servers = json.filter(server => server.owner || Discord.PermissionsBitField(server.permissions).has("ManageGuild"))
+	guildCache[access] = servers
 	setTimeout(() => delete guildCache[access], 1000 * 60 * 10)
-	return json
+	return servers
 }
 
 module.exports.getAccessToken = async (token, pool) => {
@@ -80,10 +82,10 @@ module.exports.getAccessToken = async (token, pool) => {
 	return access ? access.access : void 0
 }
 
-module.exports.generateToken = () => {
+module.exports.generateToken = (length = 20) => {
 	let result = ""
 	const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,-!=?@#$%&*()"
 
-	for (let i = 0; i < 20; i++) result += characters.charAt(Math.floor(Math.random() * characters.length))
+	for (let i = 0; i < length; i++) result += characters.charAt(Math.floor(Math.random() * characters.length))
 	return result
 }
