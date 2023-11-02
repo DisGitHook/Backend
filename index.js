@@ -3,6 +3,8 @@ const bot = require("./bot.js")
 
 const { botId, botSecret, userAgent, domain, port, cookieSecret } = require("./config.json")
 
+const encode = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
+
 const oauth = require("./util/oauth.js")
 const pool = require("./util/setupDB.js")
 
@@ -15,6 +17,39 @@ app.disable("x-powered-by")
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser(cookieSecret))
+
+const ratelimit30s = {}
+const ratelimit5m = {}
+let ratelimitGlobal5m = 0
+app.use((req, res, next) => {
+	const ip = req.headers["cf-connecting-ip"]
+	if (!req.headers["cf-connecting-ip"]) return res.status(400).send("Direct access is not allowed")
+
+	if (req.path.startsWith("/hook/")) return next()
+
+	if (ratelimit30s[ip] && ratelimit30s[ip] >= 30) return res.status(429).send("Too many requests in the last 30 seconds")
+	if (ratelimit5m[ip] && ratelimit5m[ip] >= 130) return res.status(429).send("Too many requests in the last 5 minutes")
+	if (ratelimitGlobal5m >= 800) return res.status(429).send("Too many requests in the last 5 minutes")
+
+	if (ratelimit30s[ip]) ratelimit30s[ip]++
+	else ratelimit30s[ip] = 1
+
+	if (ratelimit5m[ip]) ratelimit5m[ip]++
+	else ratelimit5m[ip] = 1
+
+	ratelimitGlobal5m++
+
+	setTimeout(() => {
+		ratelimit30s[ip]--
+	}, 1000 * 30)
+	setTimeout(() => {
+		ratelimit5m[ip]--
+		ratelimitGlobal5m--
+	}, 1000 * 60 * 5)
+
+	next()
+})
+
 app.listen(port)
 
 // - Dashboard -
@@ -59,7 +94,7 @@ app.get("/servers/:id/hooks", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
@@ -81,7 +116,7 @@ app.post("/servers/:id/hooks", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks/:hook", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
@@ -101,7 +136,7 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 })
 
 app.delete("/servers/:id/hooks/:hook", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
 
 	const [rows] = await pool.query("SELECT * FROM `user` WHERE `token` = ?", [req.signedCookies.token])
 	if (rows.length == 0) return res.status(401).send({success: false, error: "Invalid token cookie"})
@@ -120,7 +155,7 @@ app.delete("/servers/:id/hooks/:hook", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks/:hook/regen", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
@@ -138,7 +173,7 @@ app.post("/servers/:id/hooks/:hook/regen", async (req, res) => {
 })
 
 app.get("/login", async (req, res) => {
-	if (!req.query.code) return res.status(400).send("Missing code query parameter")
+	if (!req.query.code) return res.status(400).send({success: false, error: "Missing code query parameter"})
 
 	const body = {
 		client_id: botId,
@@ -199,19 +234,17 @@ const hookFunc = async (req, res) => {
 
 	if (req.params.secret.startsWith("sha256=")) {
 		const sha256 = crypto.createHmac("sha256", hook.secret)
-		if (!crypto.timingSafeEqual(Buffer.from("sha256=" + sha256.update(JSON.stringify(req.body)).digest("hex")), Buffer.from(req.params.secret))) return res.status(401).send("Invalid secret in header")
+		if (!crypto.timingSafeEqual(Buffer.from("sha256=" + sha256.update(JSON.stringify(req.body)).digest("hex")), Buffer.from(req.params.secret)))
+			return res.status(401).send({success: false, error: "Invalid secret in header"})
 	} else if (req.params.secret != hook.secret) return res.status(401).send("Invalid secret in URL")
 
 	const githubEvent = req.headers["x-github-event"]
-	if (githubEvent == "ping") {
-		console.log("Received ping event on hook " + hook.id)
-		return res.sendStatus(204)
-	}
-	if (hook.filterEvent && !hook.filterEvent.includes(githubEvent)) return res.status(202).send("Event " + githubEvent + " is disabled in settings for this hook")
+	if (githubEvent == "ping") return res.sendStatus(204)
+	if (hook.filterEvent && !hook.filterEvent.includes(githubEvent)) return res.status(202).send({success: true, info: "Event " + encode(githubEvent) + " is disabled in settings for this hook"})
 
 	const data = req.body
 	const action = data.action
-	if (hook.filterAction && !hook.filterAction.includes(action)) return res.status(202).send("Action " + action + " is disabled in settings for this hook")
+	if (hook.filterAction && !hook.filterAction.includes(action)) return res.status(202).send({success: true, info: "Action " + encode(action) + " is disabled in settings for this hook"})
 
 	let message = hook.message
 	const recursiveFunc = (obj, path = "") => {
@@ -227,11 +260,11 @@ const hookFunc = async (req, res) => {
 	try {
 		parsed = JSON.parse(message)
 	} catch (e) {
-		return res.status(500).send("Invalid JSON in message")
+		return res.status(500).send("Invalid JSON in message: " + encode(e.message))
 	}
 
 	if (Array.isArray(parsed)) parsed = parsed.find(msg => msg.event == githubEvent && msg.action == action) || parsed.find(msg => msg.event == githubEvent) || parsed[0]
-	if (!parsed || Object.keys(parsed).length == 0) return res.status(500).send("Empty JSON in message")
+	if (!parsed || Object.keys(parsed).length == 0) return res.status(500).send({success: false, error: "Empty JSON in message"})
 
 	if (hook.webhook) {
 		const webhookClient = new Discord.WebhookClient(hook.webhook)
@@ -242,7 +275,7 @@ const hookFunc = async (req, res) => {
 		if (channel) {
 			await channel.send(parsed)
 			res.sendStatus(204)
-		} else res.status(500).send("Unable to send message of hook " + hook.id + " because the channel " + hook.channel + " does not exist")
+		} else res.status(500).send({success: false, error: "Unable to send message of hook " + hook.id + " because the channel " + hook.channel + " does not exist"})
 	}
 }
 
