@@ -6,17 +6,19 @@ const mainDB = mysql.createPool(db)
 const pool = mainDB.promise()
 module.exports = pool
 
-// hook schema: id secret guild webhook? channel? name? avatar? message
+// hook schema: id secret guild webhook? channel? name? avatar? message filterEvent? filterAction?
 pool.query(
 	"CREATE TABLE IF NOT EXISTS `hook` (" +
 	"`id` VARCHAR(8) NOT NULL PRIMARY KEY," +
 	"`secret` VARCHAR(64) NOT NULL," +
 	"`guild` VARCHAR(21) NOT NULL," +
-	"`webhook` VARCHAR(128) NOT NULL," +
-	"`channel` VARCHAR(21) NOT NULL," +
-	"`name` VARCHAR(32) NOT NULL," +
-	"`avatar` VARCHAR(512) NOT NULL," +
-	"`message` VARCHAR(10240) NOT NULL" +
+	"`channel` VARCHAR(21) NULL DEFAULT NULL," +
+	"`webhook` VARCHAR(128) NULL DEFAULT NULL," +
+	"`name` VARCHAR(32) NULL DEFAULT NULL," +
+	"`avatar` VARCHAR(512) NULL DEFAULT NULL," +
+	"`message` VARCHAR(10240) NOT NULL," +
+	"`filterEvent` VARCHAR(512) NULL DEFAULT NULL," +
+	"`filterAction` VARCHAR(512) NULL DEFAULT NULL" +
 	")"
 )
 

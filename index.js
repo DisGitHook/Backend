@@ -1,15 +1,18 @@
 const Discord = require("discord.js")
-require("./bot.js")
+const bot = require("./bot.js")
 
 const { botId, botSecret, userAgent, domain, port, cookieSecret } = require("./config.json")
 
 const oauth = require("./util/oauth.js")
 const pool = require("./util/setupDB.js")
 
+const crypto = require("node:crypto")
 const express = require("express")
 const cookieParser = require("cookie-parser")
 
 const app = express()
+app.disable("x-powered-by")
+app.use(express.json())
 app.use(cookieParser(cookieSecret))
 app.listen(port)
 
@@ -22,10 +25,10 @@ app.get("/", (req, res) => {
 app.get("/servers", async (req, res) => {
 	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
 
-	const servers = await oauth.getUserServers()
+	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
 	console.log(servers)
 
-	const filtered = servers.filter(server => Discord.PermissionsBitField(server.permissions).has("ManageGuild")).map(server => ({
+	const filtered = servers.filter(server => server.owner || Discord.PermissionsBitField(server.permissions).has("ManageGuild")).map(server => ({
 		id: server.id,
 		name: server.name,
 		icon: server.icon
@@ -89,11 +92,57 @@ app.get("/logout", (req, res) => {
 
 const hookFunc = async (req, res) => {
 	const [rows] = await pool.query("SELECT * FROM `hook` WHERE `id` = ?", [req.params.id])
-	console.log(rows)
-
 	if (rows.length == 0) return res.sendStatus(404)
 
-	res.sendStatus(204)
+	const hook = rows[0]
+	console.log(req.body)
+
+	if (req.params.secret.startsWith("sha256=")) {
+		const sha256 = crypto.createHmac("sha256", hook.secret)
+		if (!crypto.timingSafeEqual(Buffer.from("sha256=" + sha256.update(JSON.stringify(req.body)).digest("hex")), Buffer.from(req.params.secret))) return res.status(401).send("Invalid secret as header")
+	} else if (req.params.secret != hook.secret) return res.status(401).send("Invalid secret in URL")
+
+	const githubEvent = req.headers["x-github-event"]
+	if (hook.filterEvent && !hook.filterEvent.includes(githubEvent)) return res.status(202).send("Event " + githubEvent + " is disabled in settings for this hook")
+
+	const data = req.body
+	const action = data.action
+	if (hook.filterAction && !hook.filterAction.includes(action)) return res.status(202).send("Action " + action + " is disabled in settings for this hook")
+
+	let message = hook.message
+	const recursiveFunc = (obj, path = "") => {
+		for (const property in obj) {
+			if (typeof obj[property] == "object") recursiveFunc(obj[property], path + property + ".")
+			else message = message.replace(new RegExp("{" + path + property + "}", "gi"), obj[property])
+		}
+	}
+	recursiveFunc(data)
+
+	let parsed = {}
+	try {
+		parsed = JSON.parse(message)
+	} catch (e) {
+		return res.status(500).send("Invalid JSON in message")
+	}
+
+	if (hook.webhook) {
+		const webhookClient = new Discord.WebhookClient(hook.webhook, hook.secret)
+		await webhookClient.send(JSON.parse(message))
+		res.sendStatus(204)
+	} else {
+		const channel = bot.channels.cache.get(hook.channel)
+		if (channel) {
+			await channel.send(JSON.parse(message))
+			res.sendStatus(204)
+		} else res.status(500).send("Unable to send message of hook " + hook.id + " because the channel " + hook.channel + " does not exist")
+	}
 }
-app.get("/hook/:id/:secret", hookFunc)
+
 app.post("/hook/:id/:secret", hookFunc)
+app.post("/hook/:id", async (req, res) => {
+	console.log(req.headers)
+	if (!req.get("X-Hub-Signature-256")) return res.status(401).send("Missing X-Hub-Signature-256 header")
+
+	req.params.secret = req.get("X-Hub-Signature-256")
+	hookFunc(req, res)
+})
