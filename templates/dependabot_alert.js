@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "auto_dismissed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "auto_reopened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "created",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -30,6 +33,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "dismissed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -40,6 +44,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "fixed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -50,6 +55,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "reintroduced",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -60,6 +66,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "reopened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

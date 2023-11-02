@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "deleted",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

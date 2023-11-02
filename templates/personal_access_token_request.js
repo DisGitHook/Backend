@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "approved",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "cancelled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "created",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -30,6 +33,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "denied",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

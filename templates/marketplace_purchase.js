@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "cancelled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "changed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "pending_change",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -30,6 +33,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "pending_change_cancelled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -40,6 +44,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "purchased",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "dismissed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "edited",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "submitted",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

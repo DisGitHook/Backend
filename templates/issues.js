@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "assigned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "closed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "deleted",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -30,6 +33,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "demilestoned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -40,6 +44,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "edited",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -50,6 +55,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "labeled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -60,6 +66,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "locked",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -70,6 +77,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "milestoned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -80,6 +88,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "opened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -90,6 +99,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "pinned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -100,6 +110,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "reopened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -110,6 +121,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "transferred",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -120,6 +132,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "unassigned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -130,6 +143,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "unlabeled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -140,6 +154,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "unlocked",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -150,6 +165,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "unpinned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

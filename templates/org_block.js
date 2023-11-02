@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "blocked",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "unblocked",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

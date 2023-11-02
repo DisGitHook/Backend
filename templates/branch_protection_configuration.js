@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "disabled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "enabled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

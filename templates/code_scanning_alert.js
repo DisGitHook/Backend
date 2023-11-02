@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "appeared_in_branch",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "closed_by_user",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -20,6 +22,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "created",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -30,6 +33,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "fixed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -40,6 +44,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "reopened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -50,6 +55,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "reopened_by_user",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

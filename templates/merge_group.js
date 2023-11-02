@@ -1,5 +1,6 @@
 module.exports = [
 	{
+		action: "checks_requested",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
@@ -10,6 +11,7 @@ module.exports = [
 		}]
 	},
 	{
+		action: "destroyed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",

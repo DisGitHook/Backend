@@ -94,6 +94,7 @@ Object.keys(events).forEach(event => {
 			"module.exports = [\n" +
 			events[event].map(action => {
 				return "\t{\n" +
+					"\t\taction: \"" + action + "\",\n" +
 					"\t\tembeds: [{\n" +
 					"\t\t\tauthor: {\n" +
 					"\t\t\t\tname: \"{{ sender.login }}\",\n" +

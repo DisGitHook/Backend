@@ -22,8 +22,8 @@ const ratelimit30s = {}
 const ratelimit5m = {}
 let ratelimitGlobal5m = 0
 app.use((req, res, next) => {
-	const ip = req.headers["cf-connecting-ip"]
 	if (!req.headers["cf-connecting-ip"]) return res.status(400).send("Direct access is not allowed")
+	const ip = "%" + req.headers["cf-connecting-ip"]
 
 	if (req.path.startsWith("/hook/")) return next()
 
@@ -33,10 +33,8 @@ app.use((req, res, next) => {
 
 	if (ratelimit30s[ip]) ratelimit30s[ip]++
 	else ratelimit30s[ip] = 1
-
 	if (ratelimit5m[ip]) ratelimit5m[ip]++
 	else ratelimit5m[ip] = 1
-
 	ratelimitGlobal5m++
 
 	setTimeout(() => {
