@@ -14,7 +14,7 @@ module.exports = [
 			image: {
 				url: "{{ workflow_run.badge_url }}"
 			},
-			color: color("green")
+			color: color("magenta")
 		}]
 	},{
 		action: "in_progress",
@@ -29,7 +29,7 @@ module.exports = [
 			image: {
 				url: "{{ workflow_run.badge_url }}"
 			},
-			color: color("black")
+			color: color("yellow")
 		}]
 	},{
 		action: "requested",
