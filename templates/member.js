@@ -18,8 +18,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`member` (`edited`)",
-			color: color("black")
+			title: "Member permissions edited",
+			color: color("cyan")
 		}]
 	},{
 		action: "removed",

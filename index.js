@@ -3,7 +3,9 @@ const bot = require("./bot.js")
 
 const { botId, botSecret, userAgent, domain, port, cookieSecret } = require("./config.json")
 
+const fs = require("node:fs")
 const path = require("node:path")
+
 const encode = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
 
 const oauth = require("./util/oauth.js")
@@ -242,16 +244,23 @@ const hookFunc = async (req, res) => {
 	if (hook.filterEvent && !JSON.parse(hook.filterEvent).includes(githubEvent)) return res.status(202).send({success: true, info: "Event " + encode(githubEvent) + " is disabled in settings for this hook"})
 
 	const data = req.body
+	console.log(data)
 	const action = data.action
 	if (hook.filterAction && !JSON.parse(hook.filterAction).includes(action)) return res.status(202).send({success: true, info: "Action " + encode(action) + " is disabled in settings for this hook"})
 
-	let message = hook.message || require(path.join(__dirname, "templates", githubEvent + ".js")).find(msg => msg.action == action) || require(path.join(__dirname, "templates", githubEvent + ".js"))[0]
-	console.log(message)
-	const recursiveFunc = (obj, path = "") => {
+	let message = hook.message
+	if (!message) {
+		const githubEventSani = githubEvent.replace(/[^a-z0-9_]/gi, "")
+		if (!fs.existsSync(path.join(__dirname, "templates", githubEventSani + ".js"))) return res.status(500).send({success: false, error: "No message & no default template for event " + encode(githubEvent)})
+
+		message = JSON.stringify(require(path.join(__dirname, "templates", githubEventSani + ".js")).find(msg => msg.action == action) || require(path.join(__dirname, "templates", githubEventSani + ".js"))[0])
+	}
+
+	const recursiveFunc = (obj, currentPath = "") => {
 		for (const property in obj) {
-			if (typeof obj[property] == "object") recursiveFunc(obj[property], path + property + ".")
+			if (typeof obj[property] == "object") recursiveFunc(obj[property], currentPath + property + ".")
 			// Possible syntax: {sender.login} or {{ sender.login }} or something in between
-			else message = message.replace(new RegExp("{{? ?" + path + property + " ?}}?", "gi"), obj[property])
+			else message = message.replace(new RegExp("{{? ?" + currentPath + property + " ?}}?", "gi"), obj[property])
 		}
 	}
 	recursiveFunc(data)

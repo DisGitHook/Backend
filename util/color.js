@@ -11,9 +11,8 @@ const colorMap = {
 	cyan: 0x00ffff,
 	magenta: 0xff00ff,
 	brown: 0x964b00,
-	olive: 0x808000,
-	teal: 0x008080,
-	navy: 0x000080
+	darkGreen: 0x006400,
+	darkRed: 0x8b0000
 }
 
 module.exports = (color = "") => {

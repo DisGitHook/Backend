@@ -59,7 +59,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`edited`)",
-			color: color("black")
+			color: color("cyan")
 		}]
 	},{
 		action: "labeled",

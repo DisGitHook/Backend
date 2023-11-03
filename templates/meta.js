@@ -8,8 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`meta` (`deleted`)",
-			color: color("red")
+			title: "This webhook has been deleted!",
+			color: color("darkRed")
 		}]
 	}
 ]

@@ -7,7 +7,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`public`",
+			title: "[{{ repository }}] Now open source!",
 			color: color("black")
 		}]
 	}

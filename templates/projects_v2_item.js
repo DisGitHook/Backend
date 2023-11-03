@@ -28,7 +28,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`created`)",
+			title: "Item created on project board",
 			color: color("green")
 		}]
 	},{
@@ -38,7 +38,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`deleted`)",
+			title: "Item deleted from project board",
 			color: color("red")
 		}]
 	},{
@@ -48,8 +48,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`edited`)",
-			color: color("black")
+			title: "Item edited on project board",
+			color: color("cyan")
 		}]
 	},{
 		action: "reordered",
@@ -58,8 +58,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`reordered`)",
-			color: color("black")
+			title: "Item reordered on project board",
+			color: color("magenta")
 		}]
 	},{
 		action: "restored",
@@ -68,8 +68,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`restored`)",
-			color: color("black")
+			title: "Item restored on project board",
+			color: color("darkGreen")
 		}]
 	}
 ]
