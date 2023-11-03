@@ -35,7 +35,7 @@ module.exports = [
 			},
 			title: "[{{ workflow_run.head_repository.name }}:{{ workflow_run.head_branch }}] Workflow **{{ workflow.name }}** requested",
 			url: "{{ workflow_run.html_url }}",
-			color: color("black")
+			color: color("magenta")
 		}]
 	}
 ]

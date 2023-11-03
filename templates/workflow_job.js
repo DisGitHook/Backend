@@ -11,7 +11,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** {{ workflow_job.conclusion }}",
 			url: "{{ workflow_job.html_url }}",
-			color: color("black")
+			color: color("magenta")
 		}]
 	},{
 		action: "in_progress",
@@ -23,7 +23,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** {{ workflow_job.status }}",
 			url: "{{ workflow_job.html_url }}",
-			color: color("black")
+			color: color("yellow")
 		}]
 	},{
 		action: "queued",
