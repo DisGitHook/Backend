@@ -7,7 +7,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`page_build`",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `page_build`",
 			color: color("black")
 		}]
 	}

@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`watch` (`started`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `watch` (`started`)",
 			color: color("black")
 		}]
 	}

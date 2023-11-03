@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`membership` (`added`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `membership` (`added`)",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +18,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`membership` (`removed`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `membership` (`removed`)",
 			color: color("black")
 		}]
 	}

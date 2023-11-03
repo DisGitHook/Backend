@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`discussion_comment` (`created`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion_comment` (`created`)",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +18,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`discussion_comment` (`deleted`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion_comment` (`deleted`)",
 			color: color("red")
 		}]
 	},{
@@ -28,8 +28,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`discussion_comment` (`edited`)",
-			color: color("black")
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion_comment` (`edited`)",
+			color: color("cyan")
 		}]
 	}
 ]

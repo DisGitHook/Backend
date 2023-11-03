@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`team` (`added_to_repository`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `team` (`added_to_repository`)",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +18,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`team` (`created`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `team` (`created`)",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +28,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`team` (`deleted`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `team` (`deleted`)",
 			color: color("red")
 		}]
 	},{
@@ -38,8 +38,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`team` (`edited`)",
-			color: color("black")
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `team` (`edited`)",
+			color: color("cyan")
 		}]
 	},{
 		action: "removed_from_repository",
@@ -48,7 +48,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`team` (`removed_from_repository`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `team` (`removed_from_repository`)",
 			color: color("black")
 		}]
 	}

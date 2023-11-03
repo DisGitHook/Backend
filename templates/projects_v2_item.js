@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`archived`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`archived`)",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +18,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`projects_v2_item` (`converted`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`converted`)",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +28,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "Item created on project board",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`created`)",
 			color: color("green")
 		}]
 	},{
@@ -38,7 +38,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "Item deleted from project board",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`deleted`)",
 			color: color("red")
 		}]
 	},{
@@ -48,7 +48,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "Item edited on project board",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`edited`)",
 			color: color("cyan")
 		}]
 	},{
@@ -58,8 +58,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "Item reordered on project board",
-			color: color("magenta")
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`reordered`)",
+			color: color("black")
 		}]
 	},{
 		action: "restored",
@@ -68,8 +68,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "Item restored on project board",
-			color: color("darkGreen")
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2_item` (`restored`)",
+			color: color("black")
 		}]
 	}
 ]

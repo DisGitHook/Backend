@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`branch_protection_rule` (`created`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `branch_protection_rule` (`created`)",
 			color: color("green")
 		}]
 	},{
@@ -18,8 +18,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`branch_protection_rule` (`edited`)",
-			color: color("black")
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `branch_protection_rule` (`edited`)",
+			color: color("cyan")
 		}]
 	},{
 		action: "deleted",
@@ -28,7 +28,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`branch_protection_rule` (`deleted`)",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `branch_protection_rule` (`deleted`)",
 			color: color("red")
 		}]
 	}

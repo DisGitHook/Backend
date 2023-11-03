@@ -7,7 +7,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "`workflow_dispatch`",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `workflow_dispatch`",
 			color: color("black")
 		}]
 	}

@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "This webhook has been deleted!",
+			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] This webhook has been deleted!",
 			color: color("darkRed")
 		}]
 	}
