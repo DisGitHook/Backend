@@ -7,7 +7,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ head_commit.tree_id }}] {{ count(commits) }} new commit(s)",
+			title: "[{{ repository.name }}] {{ count(commits) }} new commit(s)",
 			url: "{{ compare }}",
 			color: color("gray")
 		}]

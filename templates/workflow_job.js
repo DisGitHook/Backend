@@ -8,8 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** {{ workflow_run.conclusion }}",
-			url: "{{ workflow_run.html_url }}",
+			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** {{ workflow_job.conclusion }}",
+			url: "{{ workflow_job.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -19,8 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** {{ workflow_run.status }}",
-			url: "{{ workflow_run.html_url }}",
+			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** {{ workflow_job.status }}",
+			url: "{{ workflow_job.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -31,7 +31,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** queued",
-			url: "{{ workflow_run.html_url }}",
+			url: "{{ workflow_job.html_url }}",
 			color: color("gray")
 		}]
 	},{
@@ -42,7 +42,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow.name }}** waiting",
-			url: "{{ workflow_run.html_url }}",
+			url: "{{ workflow_job.html_url }}",
 			color: color("gray")
 		}]
 	}

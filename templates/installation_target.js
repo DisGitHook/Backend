@@ -8,9 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation_target` (`renamed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Renamed {{ target_type }} from **{{ changes.login.from }}** to **{{ repository.name || organization.name }}**",
+			color: color("magenta")
 		}]
 	}
 ]

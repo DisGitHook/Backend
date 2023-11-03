@@ -8,9 +8,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `merge_group` (`checks_requested`)",
+			title: "[{{ repository.name }}] Merge queue checks requested",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			description: "{{ merge_queue.head_commit.message }}",
+			color: color("blue")
 		}]
 	},{
 		action: "destroyed",
@@ -19,9 +20,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `merge_group` (`destroyed`)",
+			title: "[{{ repository.name }}] Merge queue destroyed",
 			url: "{{ repository.html_url }}",
-			color: color("darkRed")
+			description: "{{ merge_queue.head_commit.message }}",
+			color: color("red")
 		}]
 	}
 ]

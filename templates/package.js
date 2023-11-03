@@ -8,9 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `package` (`published`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Package {{ package.namespace }}/**{{ package.name }}** published on {{ package.registry.vendor }}",
+			url: "{{ package.html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "updated",
@@ -19,8 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `package` (`updated`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Package {{ package.namespace }}/**{{ package.name }}** updated",
+			url: "{{ package.html_url }}",
 			color: color("cyan")
 		}]
 	}

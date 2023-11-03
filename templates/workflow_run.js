@@ -11,9 +11,6 @@ module.exports = [
 			title: "[{{ workflow_run.head_repository.name }}:{{ workflow_run.head_branch }}] Workflow **{{ workflow.name }}** finished",
 			url: "{{ workflow_run.html_url }}",
 			description: "{{ workflow_run.conclusion }}",
-			image: {
-				url: "{{ workflow_run.badge_url }}"
-			},
 			color: color("magenta")
 		}]
 	},{
@@ -25,10 +22,6 @@ module.exports = [
 			},
 			title: "[{{ workflow_run.head_repository.name }}:{{ workflow_run.head_branch }}] Workflow **{{ workflow.name }}** started",
 			url: "{{ workflow_run.html_url }}",
-			description: "Cancel URL: {{ workflow_run.cancel_url }}",
-			image: {
-				url: "{{ workflow_run.badge_url }}"
-			},
 			color: color("yellow")
 		}]
 	},{

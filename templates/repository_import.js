@@ -7,7 +7,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] Repository imported",
+			title: "[{{ repository.full_name }}] Repository imported",
 			url: "{{ repository.html_url }}",
 			description: "Status: {{ status }}",
 			color: color("darkGreen")

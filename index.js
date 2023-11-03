@@ -10,6 +10,7 @@ const encode = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g,
 
 const oauth = require("./util/oauth.js")
 const pool = require("./util/setupDB.js")
+const events = require("./util/events.js")
 
 const crypto = require("node:crypto")
 const express = require("express")
@@ -87,11 +88,16 @@ app.get("/servers/:id/hooks", async (req, res) => {
 		name: hook.name,
 		webhook: hook.webhook,
 		channel: hook.channel,
-		message: hook.message,
+		//message: hook.message,
+		messageUrl: "https://embed.tomatenkuchen.com/?dgh=1&data=" + Buffer.from(encodeURIComponent(JSON.stringify(hook.message))).toString("base64"),
 		filterEvent: hook.filterEvent,
 		filterAction: hook.filterAction
 	}))
-	res.send({hooks})
+	res.send({
+		name: bot.guilds.cache.get(req.params.id)?.name,
+		hooks,
+		events
+	})
 })
 
 app.post("/servers/:id/hooks", async (req, res) => {
@@ -179,7 +185,7 @@ app.get("/login", async (req, res) => {
 	const body = {
 		client_id: botId,
 		client_secret: botSecret,
-		redirect_uri: "https://" + domain + "/dashboard",
+		redirect_uri: "https://" + domain + "/api/oauth",
 		grant_type: "authorization_code",
 		code: req.query.code
 	}
@@ -198,6 +204,7 @@ app.get("/login", async (req, res) => {
 	})
 	const json = await fetched.json()
 	console.log(json)
+	if (json.error) return res.status(500).send({success: false, error: json.error + ": " + json.error_description})
 
 	const user = await oauth.getUser(json.access_token).catch(err => {
 		console.log(err)
@@ -280,7 +287,7 @@ const hookFunc = async (req, res) => {
 	// Handling OR
 	message = message.replace(/{{ ?[^}]+ ?(\|\| ?[^}]+ ?){1,5}}}/gi, match => {
 		const parts = match.replace(/{{ ?| ?}}/gi, "").split("||")
-		return parts.find(part => part && part != "false")
+		return parts.find(part => part && part != "false") || ""
 	})
 	// Removing empty variables
 	message = message.replace(/{{ ?[^}]+ ?}}/gi, "")

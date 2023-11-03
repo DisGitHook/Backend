@@ -1,4 +1,4 @@
-const events = {
+module.exports = {
 	"branch_protection_configuration": ["disabled", "enabled"],
 	"branch_protection_rule": ["created", "edited", "deleted"],
 	"check_run": ["completed", "created", "requested_action", "rerequested"],
@@ -49,7 +49,6 @@ const events = {
 	"pull_request_review": ["dismissed", "edited", "submitted"],
 	"pull_request_review_thread": ["resolved", "unresolved"],
 	"push": [],
-	"registry_package": ["published", "updated"],
 	"release": ["created", "deleted", "edited", "prereleased", "published", "released", "unpublished"],
 	"repository_advisory": ["published", "reported"],
 	"repository": ["archived", "created", "deleted", "edited", "privatized", "publicized", "renamed", "transferred", "unarchived"],
@@ -71,50 +70,3 @@ const events = {
 	"workflow_job": ["completed", "in_progress", "queued", "waiting"],
 	"workflow_run": ["completed", "in_progress", "requested"]
 }
-
-const fs = require("node:fs")
-const path = require("node:path")
-
-Object.keys(events).forEach(event => {
-	fs.writeFile(path.join(__dirname, "templates", event + ".js"),
-		"const color = require(\"../util/color.js\")\n\n" +
-		(events[event].length == 0 ?
-			"module.exports = [\n" +
-			"\t{\n" +
-			"\t\tembeds: [{\n" +
-			"\t\t\tauthor: {\n" +
-			"\t\t\t\tname: \"{{ sender.login }}\",\n" +
-			"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
-			"\t\t\t},\n" +
-			"\t\t\ttitle: \"[{{ repository.name }}:{{ repository.default_branch }}] `" + event + "`\",\n" +
-			"\t\t\turl: \"{{ repository.html_url }}\",\n" +
-			"\t\t\tcolor: color(\"black\")\n" +
-			"\t\t}]\n" +
-			"\t}\n" +
-			"]\n"
-		:
-			"module.exports = [\n\t" +
-			events[event].map(action => {
-				return "{\n" +
-					"\t\taction: \"" + action + "\",\n" +
-					"\t\tembeds: [{\n" +
-					"\t\t\tauthor: {\n" +
-					"\t\t\t\tname: \"{{ sender.login }}\",\n" +
-					"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
-					"\t\t\t},\n" +
-					"\t\t\ttitle: \"[{{ repository.name }}:{{ repository.default_branch }}] `" + event + "` (`" + action + "`)\",\n" +
-					"\t\t\turl: \"{{ repository.html_url }}\",\n" +
-					"\t\t\tcolor: color(\"" + (
-						action == "created" || action == "resolved" || action == "approved" ? "green" :
-						(action == "deleted" || action == "rejected" || action == "cancelled" ? "red" :
-							(action == "edited" || action == "labeled" || action == "updated" ? "cyan" : (action == "destroyed" ? "darkRed" : (action == "locked" ? "gray" : "black"))))
-					) + "\")\n" +
-					"\t\t}]\n" +
-					"\t}"
-			}).join(",") +
-			"\n]\n"),
-		e => {
-			if (e) throw e
-		}
-	)
-})

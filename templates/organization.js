@@ -8,9 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `organization` (`deleted`)",
-			url: "{{ repository.html_url }}",
-			color: color("red")
+			title: "[{{ organization.name }}] This organization has been deleted",
+			color: color("darkRed")
 		}]
 	},{
 		action: "member_added",
@@ -19,8 +18,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `organization` (`member_added`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ organization.name }}] **{{ member.user.login }}** added to organization",
+			url: "{{ organization.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -30,8 +29,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `organization` (`member_invited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ organization.name }}] **{{ invitation.login || invitation.email }}** invited to organization",
+			url: "{{ organization.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -41,8 +40,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `organization` (`member_removed`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ organization.name }}] **{{ member.user.login }}** removed from organization",
+			url: "{{ organization.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -52,8 +51,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `organization` (`renamed`)",
-			url: "{{ repository.html_url }}",
+			title: "Organization renamed from **{{ changes.login.from }}** to **{{ organization.name }}**",
+			url: "{{ organization.html_url }}",
 			color: color("black")
 		}]
 	}
