@@ -9,8 +9,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository_ruleset` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Ruleset **{{ repository_ruleset.name }}** targeting {{ repository_ruleset.target }} created",
+			url: "{{ repository_ruleset._links.html.href }}/settings/rules",
 			color: color("green")
 		}]
 	},{
@@ -21,8 +21,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository_ruleset` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Ruleset **{{ repository_ruleset.name }}** deleted",
+			url: "{{ repository_ruleset._links.html.href }}/settings/rules",
 			color: color("red")
 		}]
 	},{
@@ -33,8 +33,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository_ruleset` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Ruleset **{{ repository_ruleset.name }}** edited",
+			url: "{{ repository_ruleset._links.html.href }}/settings/rules",
 			color: color("cyan")
 		}]
 	}

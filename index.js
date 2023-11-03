@@ -306,6 +306,8 @@ const hookFunc = async (req, res) => {
 	})
 	// Removing empty variables
 	message = message.replace(/{{ ?[^}]+ ?}}/gi, "")
+	// Remove double spaces
+	message = message.replace(/  +/gi, " ")
 
 	let parsed = {}
 	try {

@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `milestone` (`closed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Milestone **{{ milestone.title }}** closed",
+			url: "{{ milestone.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "created",
@@ -21,8 +21,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `milestone` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Milestone **{{ milestone.title }}** created",
+			url: "{{ milestone.html_url }}",
+			description: "{{ milestone.description }}",
 			color: color("green")
 		}]
 	},{
@@ -33,8 +34,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `milestone` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Milestone **{{ milestone.title }}** deleted",
+			url: "{{ milestone.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -45,8 +46,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `milestone` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Milestone **{{ milestone.title }}** edited",
+			url: "{{ milestone.html_url }}",
+			description: "Open issues: **{{ milestone.open_issues }}**\nClosed issues: **{{ milestone.closed_issues }}**\n\n{{ milestone.description }}",
 			color: color("cyan")
 		}]
 	},{
@@ -57,9 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `milestone` (`opened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Milestone **{{ milestone.title }}** opened",
+			url: "{{ milestone.html_url }}",
+			color: color("gray")
 		}]
 	}
 ]

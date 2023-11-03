@@ -9,8 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request_review_comment` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] New pull request review comment on **#{{ pull_request.number }}**",
+			url: "{{ comment.html_url }}",
+			description: "{{ comment.body }}",
 			color: color("green")
 		}]
 	},{
@@ -21,8 +22,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request_review_comment` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Pull request review comment deleted on **#{{ pull_request.number }}**",
+			url: "{{ comment.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -33,8 +34,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request_review_comment` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Pull request review comment edited on **#{{ pull_request.number }}**",
+			url: "{{ comment.html_url }}",
+			description: "{{ comment.body }}",
 			color: color("cyan")
 		}]
 	}

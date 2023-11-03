@@ -141,7 +141,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** unanswered",
+			title: "[{{ repository.name }}] Answer removed from discussion **#{{ discussion.number }}**",
 			url: "{{ discussion.html_url }}",
 			color: color("red")
 		}]

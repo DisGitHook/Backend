@@ -7,7 +7,6 @@ module.exports = [
 			author: {
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}",
-				url: "{{ sender.html_url }}",
 				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Star added",
@@ -20,7 +19,6 @@ module.exports = [
 			author: {
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}",
-				url: "{{ sender.html_url }}",
 				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Star removed",

@@ -5,25 +5,27 @@ module.exports = [
 		action: "published",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}",
-				url: "{{ sender.html_url }}"
+				name: "{{ publisher.login }}",
+				icon_url: "{{ publisher.avatar_url }}",
+				url: "{{ publisher.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository_advisory` (`published`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] {{ repository_advisory.severity }} repository advisory published (CVE {{ repository_advisory.cve_id }})",
+			url: "{{ repository_advisory.html_url }}",
+			description: "{{ repository_advisory.summary }}",
+			color: color("red")
 		}]
 	},{
 		action: "reported",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}",
-				url: "{{ sender.html_url }}"
+				name: "{{ publisher.login }}",
+				icon_url: "{{ publisher.avatar_url }}",
+				url: "{{ publisher.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository_advisory` (`reported`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Repository advisory reported (CVE {{ repository_advisory.cve_id }})",
+			url: "{{ repository_advisory.html_url }}",
+			description: "{{ repository_advisory.summary }}",
+			color: color("red")
 		}]
 	}
 ]

@@ -10,7 +10,7 @@ module.exports = [
 				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Deploy key **{{ key.title }}** created",
-			url: "{{ repository.html_url }}",
+			url: "{{ repository.html_url }}/settings/keys",
 			color: color("green")
 		}]
 	},{
@@ -21,8 +21,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] Deploy key **{{ key.title }}** deleted",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] {{ key.verified ? Verified : }} Deploy key **{{ key.title }}** deleted",
+			url: "{{ repository.html_url }}/settings/keys",
 			color: color("red")
 		}]
 	}

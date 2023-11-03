@@ -9,8 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `custom_property` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ organization.name }}] **{{ definition.property_name }}** {{ definition.value_type }} custom property created",
+			url: "https://github.com/organizations/{{ organization.login }}/settings/custom-properties",
+			description: "{{ definition.description }}",
 			color: color("green")
 		}]
 	},{
@@ -21,8 +22,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `custom_property` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ organization.name }}] Custom property **{{ definition.property_name }}** deleted",
+			url: "https://github.com/organizations/{{ organization.login }}/settings/custom-properties",
+			description: "{{ definition.description }}",
 			color: color("red")
 		}]
 	},{
@@ -33,8 +35,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `custom_property` (`updated`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Custom property **{{ definition.property_name }}** updated",
+			url: "https://github.com/organizations/{{ organization.login }}/settings/custom-properties",
+			description: "{{ definition.description }}",
 			color: color("cyan")
 		}]
 	}

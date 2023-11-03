@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2` (`closed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project **{{ projects_v2.name }}** closed",
+			url: "{{ projects_v2.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "created",
@@ -21,8 +21,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "New project **{{ projects_v2.name }}** created",
+			url: "{{ projects_v2.html_url }}",
+			description: "{{ projects_v2.short_description }}\n\n{{ projects_v2.description }}",
 			color: color("green")
 		}]
 	},{
@@ -33,8 +34,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "Project **{{ projects_v2.name }}** deleted",
+			url: "{{ organization.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -45,8 +46,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "Project **{{ projects_v2.name }}** edited",
+			url: "{{ projects_v2.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -57,9 +58,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project **{{ projects_v2.name }}** reopened",
+			url: "{{ projects_v2.html_url }}",
+			color: color("gray")
 		}]
 	}
 ]
