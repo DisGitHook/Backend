@@ -8,12 +8,12 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}] Added **{{ member.login }}** as member",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Collaborator **{{ member.login }}** added",
+			url: "{{ repository.html_url }}/settings/access",
 			thumbnail: {
 				url: "{{ member.avatar_url }}"
 			},
-			color: color("black")
+			color: color("white")
 		}]
 	},{
 		action: "edited",
@@ -23,7 +23,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "[{{ repository.name }}] Edited **{{ member.login }}**'s member permissions",
-			url: "{{ repository.html_url }}",
+			url: "{{ repository.html_url }}/settings/access",
 			thumbnail: {
 				url: "{{ member.avatar_url }}"
 			},
@@ -36,8 +36,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}] Removed **{{ member.login }}** as member",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Collaborator **{{ member.login }}** removed",
+			url: "{{ repository.html_url }}/settings/access",
 			thumbnail: {
 				url: "{{ member.avatar_url }}"
 			},

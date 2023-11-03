@@ -185,7 +185,7 @@ app.get("/login", async (req, res) => {
 	const body = {
 		client_id: botId,
 		client_secret: botSecret,
-		redirect_uri: "http://localhost:3000/api/oauth", //"https://" + domain + "/api/oauth",
+		redirect_uri: "https://" + domain + "/dashboard",
 		grant_type: "authorization_code",
 		code: req.query.code
 	}

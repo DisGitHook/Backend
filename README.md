@@ -28,3 +28,5 @@ All sent data is from the [GitHub webhook documentation](https://docs.github.com
 Exceptions:
 - `ping` event is not sent
 - `registry_package` event has no templates in favor of the `package` event as recommended by GitHub
+- `repository_vulnerability_alert` because it is deprecated in favor of `dependabot_alert` as recommended by GitHub
+- `team_add` because the `added_to_repository` action from `team` is the same
