@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `label` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `label` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `label` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `label` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `label` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `label` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	}

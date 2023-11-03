@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_run` (`completed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`completed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_run` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_run` (`requested_action`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`requested_action`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_run` (`rerequested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`rerequested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

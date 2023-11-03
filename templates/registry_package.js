@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `registry_package` (`published`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `registry_package` (`published`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,8 +19,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `registry_package` (`updated`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `registry_package` (`updated`)",
+			url: "{{ repository.html_url }}",
+			color: color("cyan")
 		}]
 	}
 ]

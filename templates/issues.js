@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`assigned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`assigned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`demilestoned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`demilestoned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -58,8 +63,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`labeled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`labeled`)",
+			url: "{{ repository.html_url }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "locked",
@@ -68,8 +74,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`locked`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`locked`)",
+			url: "{{ repository.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "milestoned",
@@ -78,7 +85,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`milestoned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`milestoned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -88,7 +96,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`opened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`opened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -98,7 +107,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`pinned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`pinned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -108,7 +118,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -118,7 +129,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`transferred`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`transferred`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -128,7 +140,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`unassigned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unassigned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -138,7 +151,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`unlabeled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unlabeled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -148,7 +162,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`unlocked`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unlocked`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -158,7 +173,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `issues` (`unpinned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unpinned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

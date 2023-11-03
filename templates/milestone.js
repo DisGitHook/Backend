@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `milestone` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `milestone` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `milestone` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `milestone` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `milestone` (`opened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`opened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

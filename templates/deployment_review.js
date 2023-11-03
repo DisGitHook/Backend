@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `deployment_review` (`approved`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `deployment_review` (`approved`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `deployment_review` (`rejected`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `deployment_review` (`rejected`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `deployment_review` (`requested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `deployment_review` (`requested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

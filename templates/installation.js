@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `installation` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `installation` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `installation` (`new_permissions_accepted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`new_permissions_accepted`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `installation` (`suspend`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`suspend`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `installation` (`unsuspend`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`unsuspend`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

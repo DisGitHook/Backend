@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `projects_v2` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `projects_v2` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `projects_v2` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `projects_v2` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `projects_v2` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `projects_v2` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

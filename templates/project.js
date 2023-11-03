@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `project` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `project` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `project` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `project` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `project` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `project` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `project` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `project` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `project` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `project` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request_review_thread` (`resolved`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review_thread` (`resolved`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request_review_thread` (`unresolved`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review_thread` (`unresolved`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

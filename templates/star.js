@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `star` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `star` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `star` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `star` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	}

@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_suite` (`completed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_suite` (`completed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_suite` (`requested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_suite` (`requested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `check_suite` (`rerequested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_suite` (`rerequested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

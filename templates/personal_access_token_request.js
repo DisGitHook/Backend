@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `personal_access_token_request` (`approved`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `personal_access_token_request` (`approved`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -18,8 +19,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `personal_access_token_request` (`cancelled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `personal_access_token_request` (`cancelled`)",
+			url: "{{ repository.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "created",
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `personal_access_token_request` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `personal_access_token_request` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `personal_access_token_request` (`denied`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `personal_access_token_request` (`denied`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

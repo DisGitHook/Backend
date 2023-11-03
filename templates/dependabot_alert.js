@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`auto_dismissed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`auto_dismissed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`auto_reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`auto_reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`dismissed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`dismissed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`fixed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`fixed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -58,7 +63,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`reintroduced`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`reintroduced`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -68,7 +74,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `dependabot_alert` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `dependabot_alert` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

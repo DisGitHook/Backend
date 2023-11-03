@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`assigned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`assigned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`auto_merge_disabled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`auto_merge_disabled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`auto_merge_enabled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`auto_merge_enabled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`converted_to_draft`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`converted_to_draft`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -58,7 +63,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`demilestoned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`demilestoned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -68,7 +74,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`dequeued`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`dequeued`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -78,7 +85,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -88,7 +96,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`enqueued`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`enqueued`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -98,8 +107,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`labeled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`labeled`)",
+			url: "{{ repository.html_url }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "locked",
@@ -108,8 +118,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`locked`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`locked`)",
+			url: "{{ repository.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "milestoned",
@@ -118,7 +129,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`milestoned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`milestoned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -128,7 +140,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`opened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`opened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -138,7 +151,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`ready_for_review`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`ready_for_review`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -148,7 +162,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -158,7 +173,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`review_request_removed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`review_request_removed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -168,7 +184,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`review_requested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`review_requested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -178,7 +195,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`synchronize`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`synchronize`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -188,7 +206,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`unassigned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`unassigned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -198,7 +217,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`unlabeled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`unlabeled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -208,7 +228,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request` (`unlocked`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request` (`unlocked`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

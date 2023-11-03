@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `org_block` (`blocked`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `org_block` (`blocked`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `org_block` (`unblocked`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `org_block` (`unblocked`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

@@ -8,8 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `marketplace_purchase` (`cancelled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`cancelled`)",
+			url: "{{ repository.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "changed",
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `marketplace_purchase` (`changed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`changed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `marketplace_purchase` (`pending_change`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`pending_change`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `marketplace_purchase` (`pending_change_cancelled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`pending_change_cancelled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `marketplace_purchase` (`purchased`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`purchased`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

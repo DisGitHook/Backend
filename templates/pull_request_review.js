@@ -8,8 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request_review` (`dismissed`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Pull Request review dismissed",
+			url: "{{ pull_request.review_comment_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "edited",
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request_review` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Pull Request review edited",
+			url: "{{ pull_request.review_comment_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -28,8 +30,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `pull_request_review` (`submitted`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review` (`submitted`)",
+			url: "{{ pull_request.review_comment_url }}",
+			color: color("green")
 		}]
 	}
 ]

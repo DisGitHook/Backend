@@ -8,8 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`cancelled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`cancelled`)",
+			url: "{{ repository.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "created",
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`pending_cancellation`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`pending_cancellation`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`pending_tier_change`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`pending_tier_change`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -58,7 +63,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `sponsorship` (`tier_changed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `sponsorship` (`tier_changed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

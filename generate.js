@@ -14,7 +14,7 @@ const events = {
 	"deployment": ["created"],
 	"deployment_protection_rule": ["requested"],
 	"deployment_review": ["approved", "rejected", "requested"],
-	"deployment_status": [],
+	"deployment_status": ["created"],
 	"discussion": ["answered", "category_changed", "closed", "created", "deleted", "edited", "labeled", "locked", "pinned", "reopened", "transferred", "unanswered", "unlabeled", "unlocked", "unpinned"],
 	"discussion_comment": ["created", "deleted", "edited"],
 	"fork": [],
@@ -53,7 +53,7 @@ const events = {
 	"release": ["created", "deleted", "edited", "prereleased", "published", "released", "unpublished"],
 	"repository_advisory": ["published", "reported"],
 	"repository": ["archived", "created", "deleted", "edited", "privatized", "publicized", "renamed", "transferred", "unarchived"],
-	"repository_dispatch": [],
+	"repository_dispatch": ["sample.collected"],
 	"repository_import": [],
 	"repository_ruleset": ["created", "deleted", "edited"],
 	"repository_vulnerability_alert": ["create", "dismiss", "reopen", "resolve"],
@@ -86,7 +86,8 @@ Object.keys(events).forEach(event => {
 			"\t\t\t\tname: \"{{ sender.login }}\",\n" +
 			"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
 			"\t\t\t},\n" +
-			"\t\t\ttitle: \"`" + event + "`\",\n" +
+			"\t\t\ttitle: \"[{{ repository.name }}:{{ repository.default_branch }}] `" + event + "`\",\n" +
+			"\t\t\turl: \"{{ repository.html_url }}\",\n" +
 			"\t\t\tcolor: color(\"black\")\n" +
 			"\t\t}]\n" +
 			"\t}\n" +
@@ -101,8 +102,13 @@ Object.keys(events).forEach(event => {
 					"\t\t\t\tname: \"{{ sender.login }}\",\n" +
 					"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
 					"\t\t\t},\n" +
-					"\t\t\ttitle: \"[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `" + event + "` (`" + action + "`)\",\n" +
-					"\t\t\tcolor: color(\"" + (action == "created" || action == "resolved" || action == "approved" ? "green" : (action == "deleted" || action == "rejected" ? "red" : (action == "edited" ? "cyan" : "black"))) + "\")\n" +
+					"\t\t\ttitle: \"[{{ repository.name }}:{{ repository.default_branch }}] `" + event + "` (`" + action + "`)\",\n" +
+					"\t\t\turl: \"{{ repository.html_url }}\",\n" +
+					"\t\t\tcolor: color(\"" + (
+						action == "created" || action == "resolved" || action == "approved" ? "green" :
+						(action == "deleted" || action == "rejected" || action == "cancelled" ? "red" :
+							(action == "edited" || action == "labeled" || action == "updated" ? "cyan" : (action == "destroyed" ? "darkRed" : (action == "locked" ? "gray" : "black"))))
+					) + "\")\n" +
 					"\t\t}]\n" +
 					"\t}"
 			}).join(",") +

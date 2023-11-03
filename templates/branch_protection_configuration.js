@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `branch_protection_configuration` (`disabled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `branch_protection_configuration` (`disabled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `branch_protection_configuration` (`enabled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `branch_protection_configuration` (`enabled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

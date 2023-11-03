@@ -7,7 +7,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `delete`",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Git {{ ref_type }} deleted",
+			url: "{{ repository.html_url }}",
+			description: "```{{ ref }}```",
 			color: color("black")
 		}]
 	}

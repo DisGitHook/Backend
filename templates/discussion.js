@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`answered`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`answered`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`category_changed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`category_changed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`closed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`closed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -38,7 +41,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`created`)",
+			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -48,7 +52,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`deleted`)",
+			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -58,7 +63,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`edited`)",
+			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -68,8 +74,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`labeled`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`labeled`)",
+			url: "{{ repository.html_url }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "locked",
@@ -78,8 +85,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`locked`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`locked`)",
+			url: "{{ repository.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "pinned",
@@ -88,7 +96,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`pinned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`pinned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -98,7 +107,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`reopened`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`reopened`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -108,7 +118,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`transferred`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`transferred`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -118,7 +129,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`unanswered`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`unanswered`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -128,7 +140,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`unlabeled`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`unlabeled`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -138,7 +151,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`unlocked`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`unlocked`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -148,7 +162,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `discussion` (`unpinned`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `discussion` (`unpinned`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

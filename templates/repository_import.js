@@ -7,8 +7,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `repository_import`",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Repository imported",
+			url: "{{ repository.html_url }}",
+			color: color("darkGreen")
 		}]
 	}
 ]

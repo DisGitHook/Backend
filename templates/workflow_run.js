@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `workflow_run` (`completed`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `workflow_run` (`completed`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,7 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `workflow_run` (`in_progress`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `workflow_run` (`in_progress`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `workflow_run` (`requested`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `workflow_run` (`requested`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}

@@ -8,7 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `security_advisory` (`published`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`published`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	},{
@@ -18,8 +19,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `security_advisory` (`updated`)",
-			color: color("black")
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`updated`)",
+			url: "{{ repository.html_url }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "withdrawn",
@@ -28,7 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[[{{ repository.name }}]({{ repository.html_url }}):{{ repository.default_branch }}] `security_advisory` (`withdrawn`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`withdrawn`)",
+			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
 	}
