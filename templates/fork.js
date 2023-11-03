@@ -7,8 +7,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `fork`",
-			url: "{{ repository.html_url }}",
+			title: "[{{ forkee.full_name }}] Fork created",
+			url: "{{ forkee.html_url }}",
 			color: color("black")
 		}]
 	}

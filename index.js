@@ -32,10 +32,10 @@ app.use((req, res, next) => {
 	if (ratelimit5m[ip] && ratelimit5m[ip] >= 130) return res.status(429).send("Too many requests in the last 5 minutes")
 	if (ratelimitGlobal5m >= 800) return res.status(429).send("Too many requests in the last 5 minutes")
 
-	if (req.path.startsWith("/hook/")) return next()
-
-	if (ratelimit30s[ip]) ratelimit30s[ip]++
-	else ratelimit30s[ip] = 1
+	if (!req.path.startsWith("/hook/")) {
+		if (ratelimit30s[ip]) ratelimit30s[ip]++
+		else ratelimit30s[ip] = 1
+	}
 	if (ratelimit5m[ip]) ratelimit5m[ip]++
 	else ratelimit5m[ip] = 1
 	ratelimitGlobal5m++
@@ -264,6 +264,19 @@ const hookFunc = async (req, res) => {
 		}
 	}
 	recursiveFunc(data)
+
+	// Handling ternary
+	message = message.replace(/{{ ?[^}]+ ?\? ?[^}]+ ?: ?[^}]+ ?}}/gi, match => {
+		const parts = match.replace(/{{ ?| ?}}/gi, "").split("?")
+		return parts[0] && parts[0] != "false" ? parts[1] : parts[2]
+	})
+	// Handling OR
+	message = message.replace(/{{ ?[^}]+ ?(\|\| ?[^}]+ ?){1,5}}}/gi, match => {
+		const parts = match.replace(/{{ ?| ?}}/gi, "").split("||")
+		return parts.find(part => part && part != "false")
+	})
+	// Removing empty variables
+	message = message.replace(/{{ ?[^}]+ ?}}/gi, "")
 
 	let parsed = {}
 	try {

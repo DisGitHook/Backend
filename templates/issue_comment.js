@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issue_comment` (`created`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Issue comment created",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -19,7 +19,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issue_comment` (`deleted`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Issue comment deleted",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
@@ -30,7 +30,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issue_comment` (`edited`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Issue comment edited",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]

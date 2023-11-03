@@ -53,7 +53,13 @@ const registerSlashcommands = () => {
 				name: "hook",
 				type: Discord.ApplicationCommandOptionType.String,
 				description: "The webhook to edit",
+				maxLength: 32,
 				autocomplete: true,
+				required: true
+			},{
+				name: "message",
+				type: Discord.ApplicationCommandOptionType.String,
+				description: "The new message as template name, JSON object or array",
 				required: true
 			}]
 		},{
@@ -64,6 +70,7 @@ const registerSlashcommands = () => {
 				name: "hook",
 				type: Discord.ApplicationCommandOptionType.String,
 				description: "The webhook to delete",
+				maxLength: 32,
 				autocomplete: true,
 				required: true
 			}]
@@ -73,7 +80,8 @@ const registerSlashcommands = () => {
 
 bot.on("ready", () => {
 	bot.user.setPresence({activities: [{name: "Custom Status", state: "Customizable GitHub hooks!", type: Discord.ActivityType.Custom}], status: "online"})
-	//registerSlashcommands()
+
+	if (Math.random() > 0.95) registerSlashcommands()
 })
 
 bot.on("guildCreate", guild => {
@@ -141,6 +149,12 @@ bot.on("interactionCreate", async interaction => {
 						ephemeral: true
 					})
 				})
+			} else if (subcommand == "edit-message") {
+				const [rows] = await pool.query("SELECT * FROM `hook` WHERE `id` = ? AND `server` = ?", [interaction.options.getString("hook"), interaction.guild.id])
+				if (rows.length == 0) return interaction.reply({content: "The hook `" + interaction.options.getString("hook") + "` doesn't exist or doesn't belong to this server.", ephemeral: true})
+
+				await pool.query("UPDATE `hook` SET `message` = ? WHERE `id` = ?", [interaction.options.getString("message"), interaction.options.getString("hook")])
+				interaction.reply({content: "Successfully updated the hook message of **" + rows[0].name + "**.", ephemeral: true})
 			} else if (subcommand == "delete") {
 				const [rows] = await pool.query("SELECT * FROM `hook` WHERE `id` = ? AND `server` = ?", [interaction.options.getString("hook"), interaction.guild.id])
 				if (rows.length == 0) return interaction.reply({content: "The hook `" + interaction.options.getString("hook") + "` doesn't exist or doesn't belong to this server.", ephemeral: true})

@@ -8,7 +8,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `deploy_key` (`created`)",
+			title: "[{{ repository.full_name }}] Deploy key **{{ key.title }}** created",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -19,7 +19,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `deploy_key` (`deleted`)",
+			title: "[{{ repository.full_name }}] Deploy key **{{ key.title }}** deleted",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
