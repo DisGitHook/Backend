@@ -8,8 +8,11 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `member` (`added`)",
+			title: "[{{ repository.name }}] Added **{{ member.login }}** as member",
 			url: "{{ repository.html_url }}",
+			thumbnail: {
+				url: "{{ member.avatar_url }}"
+			},
 			color: color("black")
 		}]
 	},{
@@ -19,8 +22,11 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `member` (`edited`)",
+			title: "[{{ repository.name }}] Edited **{{ member.login }}**'s member permissions",
 			url: "{{ repository.html_url }}",
+			thumbnail: {
+				url: "{{ member.avatar_url }}"
+			},
 			color: color("cyan")
 		}]
 	},{
@@ -30,8 +36,11 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `member` (`removed`)",
+			title: "[{{ repository.name }}] Removed **{{ member.login }}** as member",
 			url: "{{ repository.html_url }}",
+			thumbnail: {
+				url: "{{ member.avatar_url }}"
+			},
 			color: color("black")
 		}]
 	}

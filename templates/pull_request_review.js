@@ -8,9 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] Pull Request review dismissed",
-			url: "{{ pull_request.review_comment_url }}",
-			color: color("red")
+			title: "[{{ repository.name }}] Review on Pull Request **#{{ pull_request.number }}** dismissed",
+			url: "{{ review.html_url }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "edited",
@@ -19,8 +19,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] Pull Request review edited",
-			url: "{{ pull_request.review_comment_url }}",
+			title: "[{{ repository.name }}] Review on Pull Request **#{{ pull_request.number }}** edited",
+			url: "{{ review.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -30,8 +30,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review` (`submitted`)",
-			url: "{{ pull_request.review_comment_url }}",
+			title: "[{{ repository.name }}] Review on Pull Request **#{{ pull_request.number }}** submitted",
+			url: "{{ review.html_url }}",
 			color: color("green")
 		}]
 	}

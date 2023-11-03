@@ -7,9 +7,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `gollum`",
+			title: "[{{ repository.name }}] **{{ count(pages) }}** wiki pages updated",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("cyan")
 		}]
 	}
 ]

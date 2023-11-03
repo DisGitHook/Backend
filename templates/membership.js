@@ -8,9 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `membership` (`added`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ team.name }}] Added **{{ member.login }}** as member",
+			url: "{{ team.html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "removed",
@@ -19,9 +19,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `membership` (`removed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ team.name }}] Removed **{{ member.login }}** as member",
+			url: "{{ team.html_url }}",
+			color: color("red")
 		}]
 	}
 ]

@@ -8,9 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ workflow_run.head_repository.name }}:{{ workflow_run.head_branch }}] Workflow **{{ workflow.name }}** finished",
+			title: "[{{ workflow_run.head_repository.name }}:{{ workflow_run.head_branch }}] Workflow **{{ workflow.name }}** {{ workflow_run.conclusion }}",
 			url: "{{ workflow_run.html_url }}",
-			description: "{{ workflow_run.conclusion }}",
 			color: color("magenta")
 		}]
 	},{

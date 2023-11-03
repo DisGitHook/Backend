@@ -61,9 +61,9 @@ app.get("/", (req, res) => {
 })
 
 app.get("/servers", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	console.log(servers)
 
 	const filtered = servers.map(server => ({
@@ -75,9 +75,9 @@ app.get("/servers", async (req, res) => {
 })
 
 app.get("/servers/:id/hooks", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
@@ -101,9 +101,9 @@ app.get("/servers/:id/hooks", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
+	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
@@ -123,9 +123,9 @@ app.post("/servers/:id/hooks", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks/:hook", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
+	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
@@ -143,12 +143,12 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 })
 
 app.delete("/servers/:id/hooks/:hook", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
+	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
-	const [rows] = await pool.query("SELECT * FROM `user` WHERE `token` = ?", [req.signedCookies.token])
+	const [rows] = await pool.query("SELECT * FROM `user` WHERE `token` = ?", [req.signedCookies.auth])
 	if (rows.length == 0) return res.status(401).send({success: false, error: "Invalid token cookie"})
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	const [rows2] = await pool.query("SELECT * FROM `hook` WHERE `id` = ?", [req.params.hook])
@@ -162,9 +162,9 @@ app.delete("/servers/:id/hooks/:hook", async (req, res) => {
 })
 
 app.post("/servers/:id/hooks/:hook/regen", async (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send({success: false, error: "Missing token cookie"})
+	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
-	const servers = await oauth.getUserServers(req.signedCookies.token, pool)
+	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
@@ -185,7 +185,7 @@ app.get("/login", async (req, res) => {
 	const body = {
 		client_id: botId,
 		client_secret: botSecret,
-		redirect_uri: "https://" + domain + "/api/oauth",
+		redirect_uri: "http://localhost:3000/api/oauth", //"https://" + domain + "/api/oauth",
 		grant_type: "authorization_code",
 		code: req.query.code
 	}
@@ -214,7 +214,8 @@ app.get("/login", async (req, res) => {
 	console.log(user)
 
 	const token = oauth.generateToken()
-	res.cookie("token", token, {signed: true, secure: true, httpOnly: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7), domain: "." + domain.split(".").slice(-2).join(".")})
+	res.cookie("auth", token, {signed: true, secure: true, httpOnly: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
+	res.cookie("avatar", "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png", {secure: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
 
 	pool.query(
 		"INSERT INTO `user` (`id`, `token`, `access`, `refresh`, `expires`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `token` = ?, `access` = ?, `refresh` = ?, `expires` = ?",
@@ -224,12 +225,12 @@ app.get("/login", async (req, res) => {
 	res.send({token})
 })
 app.get("/logout", (req, res) => {
-	if (!req.signedCookies.token) return res.status(401).send("Missing token cookie")
+	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
-	res.clearCookie("token", {domain: "." + domain.split(".").slice(-2).join(".")})
+	res.clearCookie("auth", {domain: "." + domain.split(".").slice(-2).join(".")})
 	res.send({success: true})
 
-	pool.query("DELETE FROM `user` WHERE `token` = ?", [req.signedCookies.token])
+	pool.query("DELETE FROM `user` WHERE `token` = ?", [req.signedCookies.auth])
 })
 
 // - Hooks -
