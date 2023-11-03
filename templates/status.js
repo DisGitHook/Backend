@@ -7,8 +7,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `status`",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Status of commit changed to {{ state }}",
+			url: "{{ target_url || commit.commit.tree.url }}",
 			color: color("black")
 		}]
 	}

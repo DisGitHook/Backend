@@ -8,8 +8,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release created",
+			url: "{{ release.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -19,8 +19,7 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release deleted",
 			color: color("red")
 		}]
 	},{
@@ -30,8 +29,8 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release edited",
+			url: "{{ release.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -41,9 +40,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`prereleased`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release prereleased",
+			url: "{{ release.html_url }}",
+			color: color("yellow")
 		}]
 	},{
 		action: "published",
@@ -52,9 +51,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`published`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release published",
+			url: "{{ release.html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "released",
@@ -63,9 +62,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`released`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release released",
+			url: "{{ release.html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "unpublished",
@@ -74,9 +73,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `release` (`unpublished`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ release.name }}] {{ release.draft ? Draft : }} Release unpublished",
+			url: "{{ release.html_url }}",
+			color: color("red")
 		}]
 	}
 ]

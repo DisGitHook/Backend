@@ -6,10 +6,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `star` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Star added",
+			url: "{{ repository.html_url }}/stargazers",
 			color: color("green")
 		}]
 	},{
@@ -17,11 +18,12 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `star` (`deleted`)",
-			url: "{{ repository.html_url }}",
-			color: color("red")
+			title: "[{{ repository.name }}] Star removed",
+			url: "{{ repository.html_url }}/stargazers",
+			color: color("gray")
 		}]
 	}
 ]

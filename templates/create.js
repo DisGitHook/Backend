@@ -7,9 +7,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `create`",
+			title: "[{{ repository.name }}] Git {{ ref_type }} created",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			description: "```{{ ref }}```",
+			color: color("darkGreen")
 		}]
 	}
 ]

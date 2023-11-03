@@ -11,8 +11,7 @@ module.exports = [
 			title: "[{{ repository.name }}:{{ repository.default_branch }}] Deployment created",
 			url: "{{ deployment.url }}",
 			description: "{{ deployment.description }}\n\n{{ deployment.environment }}",
-			color: color("green"),
-			timestamp: "{{ deployment.created_at }}"
+			color: color("green")
 		}]
 	}
 ]

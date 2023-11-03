@@ -7,10 +7,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] Git {{ ref_type }} deleted",
+			title: "[{{ repository.name }}] Git {{ ref_type }} deleted",
 			url: "{{ repository.html_url }}",
 			description: "```{{ ref }}```",
-			color: color("black")
+			color: color("darkRed")
 		}]
 	}
 ]

@@ -256,11 +256,18 @@ const hookFunc = async (req, res) => {
 		message = JSON.stringify(require(path.join(__dirname, "templates", githubEventSani + ".js")).find(msg => msg.action == action) || require(path.join(__dirname, "templates", githubEventSani + ".js"))[0])
 	}
 
+	// Handling {{ count(array) }}
+	message = message.replace(/{{ ?count\(([^}]+)\) ?}}/gi, (match, group) => {
+		const parts = group.split(".")
+		let obj = data
+		for (const part of parts) obj = obj[part]
+		return obj.length
+	})
+
 	const recursiveFunc = (obj, currentPath = "") => {
 		for (const property in obj) {
 			if (typeof obj[property] == "object") recursiveFunc(obj[property], currentPath + property + ".")
-			// Possible syntax: {sender.login} or {{ sender.login }} or something in between
-			else message = message.replace(new RegExp("{{? ?" + currentPath + property + " ?}}?", "gi"), obj[property])
+			else message = message.replace(new RegExp("{{ ?" + currentPath + property + " ?}}", "gi"), obj[property])
 		}
 	}
 	recursiveFunc(data)

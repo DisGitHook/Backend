@@ -7,9 +7,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `public`",
+			title: "[{{ repository.full_name }}] Now open source!",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("darkGreen")
 		}]
 	}
 ]

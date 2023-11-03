@@ -10,6 +10,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] This webhook has been deleted",
 			url: "{{ repository.html_url }}",
+			description: "The following events were enabled:\n```{{ hook.events }}```",
 			color: color("darkRed")
 		}]
 	}

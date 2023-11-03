@@ -8,9 +8,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`published`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Security advisory published",
+			url: "https://github.com/advisories/{{ security_advisory.ghsa_id }}",
+			description: "{{ security_advisory.summary }}",
+			color: color("red")
 		}]
 	},{
 		action: "updated",
@@ -19,8 +20,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`updated`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Security advisory updated",
+			url: "https://github.com/advisories/{{ security_advisory.ghsa_id }}",
+			description: "{{ security_advisory.summary }}",
 			color: color("cyan")
 		}]
 	},{
@@ -30,9 +32,10 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `security_advisory` (`withdrawn`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Security advisory withdrawn",
+			url: "https://github.com/advisories/{{ security_advisory.ghsa_id }}",
+			description: "{{ security_advisory.summary }}",
+			color: color("green")
 		}]
 	}
 ]

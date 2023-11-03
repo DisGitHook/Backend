@@ -9,6 +9,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}:{{ repository.default_branch }}] Repository imported",
 			url: "{{ repository.html_url }}",
+			description: "Status: {{ status }}",
 			color: color("darkGreen")
 		}]
 	}

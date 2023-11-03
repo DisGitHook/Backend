@@ -30,9 +30,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `workflow_job` (`queued`)",
+			title: "[{{ repository.name }}:{{ repository.default_branch }}] Workflow **{{ workflow.name }}** queued",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("gray")
 		}]
 	},{
 		action: "waiting",

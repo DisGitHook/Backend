@@ -8,9 +8,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`appeared_in_branch`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** appeared in {{ ref }}",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "closed_by_user",
@@ -19,9 +19,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`closed_by_user`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** closed as {{ alert.dismissed_reason }}",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "created",
@@ -30,9 +30,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`created`)",
-			url: "{{ repository.html_url }}",
-			color: color("green")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** created",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "fixed",
@@ -41,9 +41,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`fixed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** fixed",
+			url: "{{ alert.html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "reopened",
@@ -52,9 +52,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** reopened",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "reopened_by_user",
@@ -63,9 +63,9 @@ module.exports = [
 				name: "{{ sender.login }}",
 				icon_url: "{{ sender.avatar_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `code_scanning_alert` (`reopened_by_user`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Code scanning alert **#{{ alert.number }}** reopened",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	}
 ]
