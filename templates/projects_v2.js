@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "closed",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`projects_v2` (`closed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`projects_v2` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`projects_v2` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`projects_v2` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -51,6 +49,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`projects_v2` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

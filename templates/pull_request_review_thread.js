@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "resolved",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request_review_thread` (`resolved`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "unresolved",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request_review_thread` (`unresolved`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

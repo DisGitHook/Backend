@@ -77,7 +77,8 @@ const path = require("node:path")
 
 Object.keys(events).forEach(event => {
 	fs.writeFile(path.join(__dirname, "templates", event + ".js"),
-		events[event].length == 0 ?
+		"const color = require(\"../util/color.js\")\n\n" +
+		(events[event].length == 0 ?
 			"module.exports = [\n" +
 			"\t{\n" +
 			"\t\tembeds: [{\n" +
@@ -86,14 +87,14 @@ Object.keys(events).forEach(event => {
 			"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
 			"\t\t\t},\n" +
 			"\t\t\ttitle: \"`" + event + "`\",\n" +
-			"\t\t\tcolor: 0\n" +
+			"\t\t\tcolor: color(\"black\")\n" +
 			"\t\t}]\n" +
 			"\t}\n" +
 			"]\n"
 		:
-			"module.exports = [\n" +
+			"module.exports = [\n\t" +
 			events[event].map(action => {
-				return "\t{\n" +
+				return "{\n" +
 					"\t\taction: \"" + action + "\",\n" +
 					"\t\tembeds: [{\n" +
 					"\t\t\tauthor: {\n" +
@@ -101,11 +102,11 @@ Object.keys(events).forEach(event => {
 					"\t\t\t\ticon_url: \"{{ sender.avatar_url }}\"\n" +
 					"\t\t\t},\n" +
 					"\t\t\ttitle: \"`" + event + "` (`" + action + "`)\",\n" +
-					"\t\t\tcolor: 0\n" +
+					"\t\t\tcolor: color(\"" + (action == "created" || action == "resolved" || action == "approved" ? "green" : (action == "deleted" || action == "rejected" ? "red" : "black")) + "\")\n" +
 					"\t\t}]\n" +
 					"\t}"
-			}).join(",\n") +
-			"]\n",
+			}).join(",") +
+			"\n]\n"),
 		e => {
 			if (e) throw e
 		}

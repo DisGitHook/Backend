@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "deleted",
@@ -7,6 +9,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`meta` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	}]
+	}
+]

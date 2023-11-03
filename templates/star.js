@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "created",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`star` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`star` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	}]
+	}
+]

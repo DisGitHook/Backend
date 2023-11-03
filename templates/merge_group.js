@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "checks_requested",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`merge_group` (`checks_requested`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "destroyed",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`merge_group` (`destroyed`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

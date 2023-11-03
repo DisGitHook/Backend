@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "auto_dismissed",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`auto_dismissed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "auto_reopened",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`auto_reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "dismissed",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`dismissed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "fixed",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`fixed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reintroduced",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`reintroduced`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -73,6 +69,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`dependabot_alert` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

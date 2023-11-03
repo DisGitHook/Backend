@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "completed",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`check_suite` (`completed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "requested",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`check_suite` (`requested`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "rerequested",
 		embeds: [{
 			author: {
@@ -29,6 +29,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`check_suite` (`rerequested`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

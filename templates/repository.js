@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "archived",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`archived`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "privatized",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`privatized`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "publicized",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`publicized`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "renamed",
 		embeds: [{
 			author: {
@@ -73,10 +69,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`renamed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "transferred",
 		embeds: [{
 			author: {
@@ -84,10 +79,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`transferred`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unarchived",
 		embeds: [{
 			author: {
@@ -95,6 +89,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository` (`unarchived`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

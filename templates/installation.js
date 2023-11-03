@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "created",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`installation` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`installation` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "new_permissions_accepted",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`installation` (`new_permissions_accepted`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "suspend",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`installation` (`suspend`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unsuspend",
 		embeds: [{
 			author: {
@@ -51,6 +49,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`installation` (`unsuspend`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

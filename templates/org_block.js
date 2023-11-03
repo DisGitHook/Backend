@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "blocked",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`org_block` (`blocked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unblocked",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`org_block` (`unblocked`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

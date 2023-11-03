@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "created",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "prereleased",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`prereleased`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "published",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`published`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "released",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`released`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unpublished",
 		embeds: [{
 			author: {
@@ -73,6 +69,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`release` (`unpublished`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

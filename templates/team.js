@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "added_to_repository",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`team` (`added_to_repository`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`team` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`team` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`team` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "removed_from_repository",
 		embeds: [{
 			author: {
@@ -51,6 +49,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`team` (`removed_from_repository`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

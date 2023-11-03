@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "started",
@@ -7,6 +9,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`watch` (`started`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

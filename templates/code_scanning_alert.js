@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "appeared_in_branch",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`appeared_in_branch`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "closed_by_user",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`closed_by_user`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "fixed",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`fixed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened_by_user",
 		embeds: [{
 			author: {
@@ -62,6 +59,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`code_scanning_alert` (`reopened_by_user`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

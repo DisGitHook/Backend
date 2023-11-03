@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "cancelled",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`marketplace_purchase` (`cancelled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "changed",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`marketplace_purchase` (`changed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pending_change",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`marketplace_purchase` (`pending_change`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pending_change_cancelled",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`marketplace_purchase` (`pending_change_cancelled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "purchased",
 		embeds: [{
 			author: {
@@ -51,6 +49,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`marketplace_purchase` (`purchased`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

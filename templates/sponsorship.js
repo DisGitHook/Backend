@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "cancelled",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`cancelled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pending_cancellation",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`pending_cancellation`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pending_tier_change",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`pending_tier_change`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "tier_changed",
 		embeds: [{
 			author: {
@@ -62,6 +59,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`sponsorship` (`tier_changed`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

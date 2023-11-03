@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "assigned",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`assigned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "closed",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`closed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "demilestoned",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`demilestoned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "labeled",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`labeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "locked",
 		embeds: [{
 			author: {
@@ -73,10 +69,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`locked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "milestoned",
 		embeds: [{
 			author: {
@@ -84,10 +79,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`milestoned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "opened",
 		embeds: [{
 			author: {
@@ -95,10 +89,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`opened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pinned",
 		embeds: [{
 			author: {
@@ -106,10 +99,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`pinned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -117,10 +109,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "transferred",
 		embeds: [{
 			author: {
@@ -128,10 +119,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`transferred`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unassigned",
 		embeds: [{
 			author: {
@@ -139,10 +129,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`unassigned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlabeled",
 		embeds: [{
 			author: {
@@ -150,10 +139,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`unlabeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlocked",
 		embeds: [{
 			author: {
@@ -161,10 +149,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`unlocked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unpinned",
 		embeds: [{
 			author: {
@@ -172,6 +159,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`issues` (`unpinned`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "approved",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`deployment_review` (`approved`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "rejected",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`deployment_review` (`rejected`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "requested",
 		embeds: [{
 			author: {
@@ -29,6 +29,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`deployment_review` (`requested`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

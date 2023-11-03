@@ -3,6 +3,7 @@ const bot = require("./bot.js")
 
 const { botId, botSecret, userAgent, domain, port, cookieSecret } = require("./config.json")
 
+const path = require("node:path")
 const encode = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
 
 const oauth = require("./util/oauth.js")
@@ -25,11 +26,11 @@ app.use((req, res, next) => {
 	if (!req.headers["cf-connecting-ip"]) return res.status(400).send("Direct access is not allowed")
 	const ip = "%" + req.headers["cf-connecting-ip"]
 
-	if (req.path.startsWith("/hook/")) return next()
-
 	if (ratelimit30s[ip] && ratelimit30s[ip] >= 30) return res.status(429).send("Too many requests in the last 30 seconds")
 	if (ratelimit5m[ip] && ratelimit5m[ip] >= 130) return res.status(429).send("Too many requests in the last 5 minutes")
 	if (ratelimitGlobal5m >= 800) return res.status(429).send("Too many requests in the last 5 minutes")
+
+	if (req.path.startsWith("/hook/")) return next()
 
 	if (ratelimit30s[ip]) ratelimit30s[ip]++
 	else ratelimit30s[ip] = 1
@@ -107,8 +108,8 @@ app.post("/servers/:id/hooks", async (req, res) => {
 
 	const secret = oauth.generateToken()
 	await pool.query(
-		"INSERT INTO `hook` (`id`, `server`, `webhook`, `name`, `avatar`, `username`, `channel`, `message`, `secret`, `filterEvent`, `filterAction`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		[id, req.params.id, req.body.webhook, req.body.name, req.body.avatar, req.body.username, req.body.channel, req.body.message, secret, req.body.filterEvent, req.body.filterAction]
+		"INSERT INTO `hook` (`id`, `name`, `server`, `webhook`, `channel`, `message`, `secret`, `filterEvent`, `filterAction`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+		[id, req.body.name, req.params.id, req.body.webhook, req.body.channel, req.body.message, secret, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction)]
 	)
 	res.send({success: true, id, secret})
 })
@@ -127,8 +128,8 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 	if (hook.server != req.params.id) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	await pool.query(
-		"UPDATE `hook` SET `webhook` = ?, `name` = ?, `avatar` = ?, `username` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
-		[req.body.webhook, req.body.name, req.body.avatar, req.body.username, req.body.channel, req.body.message, req.body.filterEvent, req.body.filterAction, req.params.hook]
+		"UPDATE `hook` SET `webhook` = ?, `name` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
+		[req.body.webhook, req.body.name, req.body.channel, req.body.message, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction), req.params.hook]
 	)
 	res.send({success: true})
 })
@@ -238,17 +239,18 @@ const hookFunc = async (req, res) => {
 
 	const githubEvent = req.headers["x-github-event"]
 	if (githubEvent == "ping") return res.sendStatus(204)
-	if (hook.filterEvent && !hook.filterEvent.includes(githubEvent)) return res.status(202).send({success: true, info: "Event " + encode(githubEvent) + " is disabled in settings for this hook"})
+	if (hook.filterEvent && !JSON.parse(hook.filterEvent).includes(githubEvent)) return res.status(202).send({success: true, info: "Event " + encode(githubEvent) + " is disabled in settings for this hook"})
 
 	const data = req.body
 	const action = data.action
-	if (hook.filterAction && !hook.filterAction.includes(action)) return res.status(202).send({success: true, info: "Action " + encode(action) + " is disabled in settings for this hook"})
+	if (hook.filterAction && !JSON.parse(hook.filterAction).includes(action)) return res.status(202).send({success: true, info: "Action " + encode(action) + " is disabled in settings for this hook"})
 
-	let message = hook.message
+	let message = hook.message || require(path.join(__dirname, "templates", githubEvent + ".js")).find(msg => msg.action == action) || require(path.join(__dirname, "templates", githubEvent + ".js"))[0]
+	console.log(message)
 	const recursiveFunc = (obj, path = "") => {
 		for (const property in obj) {
 			if (typeof obj[property] == "object") recursiveFunc(obj[property], path + property + ".")
-			// Possible syntax: {sender.login} or {{ sender.login }}
+			// Possible syntax: {sender.login} or {{ sender.login }} or something in between
 			else message = message.replace(new RegExp("{{? ?" + path + property + " ?}}?", "gi"), obj[property])
 		}
 	}
@@ -261,7 +263,12 @@ const hookFunc = async (req, res) => {
 		return res.status(500).send("Invalid JSON in message: " + encode(e.message))
 	}
 
-	if (Array.isArray(parsed)) parsed = parsed.find(msg => msg.event == githubEvent && msg.action == action) || parsed.find(msg => msg.event == githubEvent) || parsed[0]
+	if (Array.isArray(parsed)) parsed = parsed.find(msg => {
+		if (!Array.isArray(msg.event)) msg.event = [msg.event]
+		if (!Array.isArray(msg.action)) msg.action = [msg.action]
+
+		return msg.event.includes(githubEvent) && msg.action.includes(action)
+	}) || parsed.find(msg => msg.event == githubEvent) || parsed[0]
 	if (!parsed || Object.keys(parsed).length == 0) return res.status(500).send({success: false, error: "Empty JSON in message"})
 
 	if (hook.webhook) {
@@ -273,13 +280,12 @@ const hookFunc = async (req, res) => {
 		if (channel) {
 			await channel.send(parsed)
 			res.sendStatus(204)
-		} else res.status(500).send({success: false, error: "Unable to send message of hook " + hook.id + " because the channel " + hook.channel + " does not exist"})
+		} else res.status(500).send({success: false, error: "Unable to send message because the channel " + hook.channel + " doesn't exist"})
 	}
 }
 
 app.post("/hook/:id/:secret", hookFunc)
 app.post("/hook/:id", async (req, res) => {
-	console.log(req.headers)
 	if (!req.get("X-Hub-Signature-256")) return res.status(401).send("Missing X-Hub-Signature-256 header")
 
 	req.params.secret = req.get("X-Hub-Signature-256")

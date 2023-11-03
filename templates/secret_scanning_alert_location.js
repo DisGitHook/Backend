@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "created",
@@ -7,6 +9,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`secret_scanning_alert_location` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	}]
+	}
+]

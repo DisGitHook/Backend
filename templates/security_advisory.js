@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "published",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`security_advisory` (`published`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "updated",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`security_advisory` (`updated`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "withdrawn",
 		embeds: [{
 			author: {
@@ -29,6 +29,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`security_advisory` (`withdrawn`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

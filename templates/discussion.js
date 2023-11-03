@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "answered",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`answered`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "category_changed",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`category_changed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "closed",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`closed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "created",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`created`)",
-			color: 0
+			color: color("green")
 		}]
-	},
-	{
+	},{
 		action: "deleted",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "labeled",
 		embeds: [{
 			author: {
@@ -73,10 +69,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`labeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "locked",
 		embeds: [{
 			author: {
@@ -84,10 +79,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`locked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "pinned",
 		embeds: [{
 			author: {
@@ -95,10 +89,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`pinned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -106,10 +99,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "transferred",
 		embeds: [{
 			author: {
@@ -117,10 +109,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`transferred`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unanswered",
 		embeds: [{
 			author: {
@@ -128,10 +119,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`unanswered`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlabeled",
 		embeds: [{
 			author: {
@@ -139,10 +129,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`unlabeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlocked",
 		embeds: [{
 			author: {
@@ -150,10 +139,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`unlocked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unpinned",
 		embeds: [{
 			author: {
@@ -161,6 +149,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`discussion` (`unpinned`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

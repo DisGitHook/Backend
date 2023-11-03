@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "published",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository_advisory` (`published`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reported",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`repository_advisory` (`reported`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "deleted",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`organization` (`deleted`)",
-			color: 0
+			color: color("red")
 		}]
-	},
-	{
+	},{
 		action: "member_added",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`organization` (`member_added`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "member_invited",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`organization` (`member_invited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "member_removed",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`organization` (`member_removed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "renamed",
 		embeds: [{
 			author: {
@@ -51,6 +49,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`organization` (`renamed`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

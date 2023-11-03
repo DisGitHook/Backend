@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "assigned",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`assigned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "auto_merge_disabled",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`auto_merge_disabled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "auto_merge_enabled",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`auto_merge_enabled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "closed",
 		embeds: [{
 			author: {
@@ -40,10 +39,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`closed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "converted_to_draft",
 		embeds: [{
 			author: {
@@ -51,10 +49,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`converted_to_draft`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "demilestoned",
 		embeds: [{
 			author: {
@@ -62,10 +59,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`demilestoned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "dequeued",
 		embeds: [{
 			author: {
@@ -73,10 +69,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`dequeued`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "edited",
 		embeds: [{
 			author: {
@@ -84,10 +79,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`edited`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "enqueued",
 		embeds: [{
 			author: {
@@ -95,10 +89,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`enqueued`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "labeled",
 		embeds: [{
 			author: {
@@ -106,10 +99,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`labeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "locked",
 		embeds: [{
 			author: {
@@ -117,10 +109,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`locked`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "milestoned",
 		embeds: [{
 			author: {
@@ -128,10 +119,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`milestoned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "opened",
 		embeds: [{
 			author: {
@@ -139,10 +129,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`opened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "ready_for_review",
 		embeds: [{
 			author: {
@@ -150,10 +139,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`ready_for_review`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "reopened",
 		embeds: [{
 			author: {
@@ -161,10 +149,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`reopened`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "review_request_removed",
 		embeds: [{
 			author: {
@@ -172,10 +159,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`review_request_removed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "review_requested",
 		embeds: [{
 			author: {
@@ -183,10 +169,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`review_requested`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "synchronize",
 		embeds: [{
 			author: {
@@ -194,10 +179,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`synchronize`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unassigned",
 		embeds: [{
 			author: {
@@ -205,10 +189,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`unassigned`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlabeled",
 		embeds: [{
 			author: {
@@ -216,10 +199,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`unlabeled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "unlocked",
 		embeds: [{
 			author: {
@@ -227,6 +209,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`pull_request` (`unlocked`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "disabled",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`branch_protection_configuration` (`disabled`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "enabled",
 		embeds: [{
 			author: {
@@ -18,6 +19,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`branch_protection_configuration` (`enabled`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]

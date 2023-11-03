@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		embeds: [{
@@ -6,7 +8,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`github_app_authorization`",
-			color: 0
+			color: color("black")
 		}]
 	}
 ]

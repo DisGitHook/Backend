@@ -1,3 +1,5 @@
+const color = require("../util/color.js")
+
 module.exports = [
 	{
 		action: "completed",
@@ -7,10 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`workflow_job` (`completed`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "in_progress",
 		embeds: [{
 			author: {
@@ -18,10 +19,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`workflow_job` (`in_progress`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "queued",
 		embeds: [{
 			author: {
@@ -29,10 +29,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`workflow_job` (`queued`)",
-			color: 0
+			color: color("black")
 		}]
-	},
-	{
+	},{
 		action: "waiting",
 		embeds: [{
 			author: {
@@ -40,6 +39,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}"
 			},
 			title: "`workflow_job` (`waiting`)",
-			color: 0
+			color: color("black")
 		}]
-	}]
+	}
+]
