@@ -6,9 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review_comment` (`created`)",
+			title: "[{{ repository.name }}] `pull_request_review_comment` (`created`)",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -17,9 +18,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review_comment` (`deleted`)",
+			title: "[{{ repository.name }}] `pull_request_review_comment` (`deleted`)",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
@@ -28,9 +30,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `pull_request_review_comment` (`edited`)",
+			title: "[{{ repository.name }}] `pull_request_review_comment` (`edited`)",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]

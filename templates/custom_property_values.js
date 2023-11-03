@@ -6,10 +6,12 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `custom_property_values` (`updated`)",
+			title: "[{{ repository.name }}] Custom property values updated",
 			url: "{{ repository.html_url }}",
+			description: "Now **{{ count(new_property_values) }}** custom property values, old value was **{{ count(old_property_values) }}**",
 			color: color("cyan")
 		}]
 	}

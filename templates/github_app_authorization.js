@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "Revoked authorization",
 			color: color("gray")

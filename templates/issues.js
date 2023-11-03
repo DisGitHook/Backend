@@ -6,9 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`assigned`)",
+			title: "[{{ repository.name }}] `issues` (`assigned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -17,9 +18,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`closed`)",
+			title: "[{{ repository.name }}] `issues` (`closed`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -28,9 +30,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`deleted`)",
+			title: "[{{ repository.name }}] `issues` (`deleted`)",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
@@ -39,9 +42,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`demilestoned`)",
+			title: "[{{ repository.name }}] `issues` (`demilestoned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -50,9 +54,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`edited`)",
+			title: "[{{ repository.name }}] `issues` (`edited`)",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
@@ -61,9 +66,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`labeled`)",
+			title: "[{{ repository.name }}] `issues` (`labeled`)",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
@@ -72,9 +78,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`locked`)",
+			title: "[{{ repository.name }}] `issues` (`locked`)",
 			url: "{{ repository.html_url }}",
 			color: color("gray")
 		}]
@@ -83,9 +90,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`milestoned`)",
+			title: "[{{ repository.name }}] `issues` (`milestoned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -94,9 +102,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`opened`)",
+			title: "[{{ repository.name }}] `issues` (`opened`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -105,9 +114,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`pinned`)",
+			title: "[{{ repository.name }}] `issues` (`pinned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -116,9 +126,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`reopened`)",
+			title: "[{{ repository.name }}] `issues` (`reopened`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -127,9 +138,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`transferred`)",
+			title: "[{{ repository.name }}] `issues` (`transferred`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -138,9 +150,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unassigned`)",
+			title: "[{{ repository.name }}] `issues` (`unassigned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -149,9 +162,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unlabeled`)",
+			title: "[{{ repository.name }}] `issues` (`unlabeled`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -160,9 +174,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unlocked`)",
+			title: "[{{ repository.name }}] `issues` (`unlocked`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -171,9 +186,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `issues` (`unpinned`)",
+			title: "[{{ repository.name }}] `issues` (`unpinned`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]

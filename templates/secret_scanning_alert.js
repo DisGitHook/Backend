@@ -6,9 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `secret_scanning_alert` (`created`)",
+			title: "[{{ repository.name }}] `secret_scanning_alert` (`created`)",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -17,9 +18,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `secret_scanning_alert` (`reopened`)",
+			title: "[{{ repository.name }}] `secret_scanning_alert` (`reopened`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -28,9 +30,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `secret_scanning_alert` (`resolved`)",
+			title: "[{{ repository.name }}] `secret_scanning_alert` (`resolved`)",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -39,9 +42,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `secret_scanning_alert` (`revoked`)",
+			title: "[{{ repository.name }}] `secret_scanning_alert` (`revoked`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]

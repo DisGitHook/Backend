@@ -35,7 +35,7 @@ module.exports.getUserServers = async (token, pool) => {
 	if (!res.ok) return new Error("Couldnt get guild data, failed with " + res.status + " " + res.statusText)
 
 	const json = await res.json()
-	const servers = json.filter(server => server.owner || Discord.PermissionsBitField(server.permissions).has("ManageGuild"))
+	const servers = json.filter(server => server.owner || new Discord.PermissionsBitField(server.permissions).has("ManageGuild"))
 	guildCache[access] = servers
 	setTimeout(() => delete guildCache[access], 1000 * 60 * 10)
 	return servers

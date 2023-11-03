@@ -6,9 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `repository_advisory` (`published`)",
+			title: "[{{ repository.name }}] `repository_advisory` (`published`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -17,9 +18,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `repository_advisory` (`reported`)",
+			title: "[{{ repository.name }}] `repository_advisory` (`reported`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]

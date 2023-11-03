@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ organization.name }}] User **{{ blocked_user.login }}** blocked",
 			url: "{{ organization.html_url }}",
@@ -20,7 +21,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ organization.name }}] User **{{ blocked_user.login }}** unblocked",
 			url: "{{ organization.html_url }}",

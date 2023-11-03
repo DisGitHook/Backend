@@ -6,10 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`cancelled`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ marketplace_purchase.plan.name }}] Marketplace plan cancelled",
 			color: color("red")
 		}]
 	},{
@@ -17,44 +17,44 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`changed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ marketplace_purchase.plan.name }}] Marketplace plan changed",
+			color: color("cyan")
 		}]
 	},{
 		action: "pending_change",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`pending_change`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ marketplace_purchase.plan.name }}] Pending marketplace plan change",
+			color: color("gray")
 		}]
 	},{
 		action: "pending_change_cancelled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`pending_change_cancelled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ marketplace_purchase.plan.name }}] Pending marketplace plan change cancelled",
+			color: color("gray")
 		}]
 	},{
 		action: "purchased",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `marketplace_purchase` (`purchased`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ marketplace_purchase.plan.name }}] Plan purchased",
+			color: color("green")
 		}]
 	}
 ]

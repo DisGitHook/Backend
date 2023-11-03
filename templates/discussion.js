@@ -6,43 +6,47 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`answered`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Answer added to discussion **#{{ discussion.number }}**",
+			url: "{{ discussion.answer_html_url }}",
+			color: color("green")
 		}]
 	},{
 		action: "category_changed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`category_changed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Category of discussion **#{{ discussion.number }}** changed",
+			url: "{{ discussion.html_url }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "closed",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`closed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** closed",
+			url: "{{ discussion.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "created",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** created",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] New discussion **#{{ discussion.number }}**: {{ discussion.title }}",
+			url: "{{ discussion.html_url }}",
 			color: color("green")
 		}]
 	},{
@@ -50,10 +54,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** deleted",
+			url: "{{ discussion.html_url }}",
 			color: color("red")
 		}]
 	},{
@@ -61,10 +66,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** edited",
+			url: "{{ discussion.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -72,10 +78,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`labeled`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** had label **{{ label.name }}** added",
+			url: "{{ discussion.html_url }}",
 			color: color("cyan")
 		}]
 	},{
@@ -83,10 +90,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`locked`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** locked",
+			url: "{{ discussion.html_url }}",
 			color: color("gray")
 		}]
 	},{
@@ -94,77 +102,84 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`pinned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** pinned",
+			url: "{{ discussion.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "reopened",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** reopened",
+			url: "{{ discussion.html_url }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "transferred",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`transferred`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** transferred",
+			url: "{{ discussion.html_url }}",
+			color: color("blue")
 		}]
 	},{
 		action: "unanswered",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`unanswered`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** unanswered",
+			url: "{{ discussion.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "unlabeled",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`unlabeled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** had label **{{ label.name }}** removed",
+			url: "{{ discussion.html_url }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "unlocked",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`unlocked`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** unlocked",
+			url: "{{ discussion.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "unpinned",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `discussion` (`unpinned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Discussion **#{{ discussion.number }}** unpinned",
+			url: "{{ discussion.html_url }}",
+			color: color("gray")
 		}]
 	}
 ]

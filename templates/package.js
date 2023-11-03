@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Package {{ package.namespace }}/**{{ package.name }}** published on {{ package.registry.vendor }}",
 			url: "{{ package.html_url }}",
@@ -17,7 +18,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Package {{ package.namespace }}/**{{ package.name }}** updated",
 			url: "{{ package.html_url }}",

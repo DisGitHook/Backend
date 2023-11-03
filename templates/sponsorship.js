@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] Recurring sponsorship cancelled",
 			url: "{{ sponsorship.maintainer.html_url }}",
@@ -17,7 +18,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] New sponsor",
 			url: "{{ repository.html_url }}",
@@ -28,7 +30,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] Sponsorship edited",
 			url: "{{ repository.html_url }}",
@@ -39,7 +42,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] Sponsorship will end",
 			url: "{{ repository.html_url }}",
@@ -50,7 +54,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] Sponsorship tier will change to **{{ sponsorship.tier.name }}**",
 			url: "{{ repository.html_url }}",
@@ -61,7 +66,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ sponsorship.maintainer.login || sponsorship.sponsorable.login }}] Sponsorship tier changed to **{{ sponsorship.tier.name }}**",
 			url: "{{ repository.html_url }}",

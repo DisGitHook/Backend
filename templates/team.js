@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Team **{{ team.name }}** added",
 			url: "{{ repository.html_url }}",
@@ -17,7 +18,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "Team **{{ team.name }}** created",
 			url: "{{ team.html_url }}",
@@ -28,7 +30,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "Team **{{ team.name }}** deleted",
 			url: "{{ team.html_url }}",
@@ -39,7 +42,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "Team **{{ team.name }}** edited",
 			url: "{{ team.html_url }}",
@@ -50,7 +54,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Team **{{ team.name }}** removed",
 			url: "{{ repository.html_url }}",

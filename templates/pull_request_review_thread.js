@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Conversation on Pull Request **#{{ pull_request.number }}** resolved",
 			url: "{{ thread.comments.html_url }}",
@@ -17,7 +18,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Conversation on Pull Request **#{{ pull_request.number }}** unresolved",
 			url: "{{ thread.comments.html_url }}",

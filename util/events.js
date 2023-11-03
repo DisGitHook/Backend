@@ -1,8 +1,8 @@
 module.exports = {
 	"branch_protection_configuration": ["disabled", "enabled"],
 	"branch_protection_rule": ["created", "edited", "deleted"],
-	"check_run": ["completed", "created", "requested_action", "rerequested"],
-	"check_suite": ["completed", "requested", "rerequested"],
+	"check_run": ["completed", "created"],
+	"check_suite": ["completed"],
 	"code_scanning_alert": ["appeared_in_branch", "closed_by_user", "created", "fixed", "reopened", "reopened_by_user"],
 	"commit_comment": ["created"],
 	"create": [],
@@ -52,7 +52,6 @@ module.exports = {
 	"release": ["created", "deleted", "edited", "prereleased", "published", "released", "unpublished"],
 	"repository_advisory": ["published", "reported"],
 	"repository": ["archived", "created", "deleted", "edited", "privatized", "publicized", "renamed", "transferred", "unarchived"],
-	"repository_dispatch": ["sample.collected"],
 	"repository_import": [],
 	"repository_ruleset": ["created", "deleted", "edited"],
 	"secret_scanning_alert": ["created", "reopened", "resolved", "revoked"],

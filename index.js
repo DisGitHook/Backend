@@ -52,6 +52,14 @@ app.use((req, res, next) => {
 	next()
 })
 
+app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Origin", "https://disgithook.tomatenkuchen.com")
+	res.setHeader("Access-Control-Allow-Methods", "OPTIONS,GET,POST,DELETE")
+	res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+	res.setHeader("Access-Control-Allow-Credentials", "true")
+	next()
+})
+
 app.listen(port)
 
 // - Dashboard -
@@ -64,13 +72,18 @@ app.get("/servers", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
-	console.log(servers)
+	if (!servers || !servers.some) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 
 	const filtered = servers.map(server => ({
 		id: server.id,
 		name: server.name,
-		icon: server.icon
-	}))
+		icon: server.icon,
+		active: bot.guilds.cache.has(server.id)
+	})).sort((a, b) => {
+		if (a.active && b.active) return 0
+		if (!a.active && b.active) return 1
+		return -1
+	})
 	res.send({servers: filtered})
 })
 
@@ -78,7 +91,7 @@ app.get("/servers/:id/hooks", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
-	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
+	if (!servers || !servers.some) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	const [rows] = await pool.query("SELECT * FROM `hook` WHERE `server` = ?", [req.params.id])
@@ -104,7 +117,7 @@ app.post("/servers/:id/hooks", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
-	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
+	if (!servers) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	let id = oauth.generateToken(8)
@@ -117,7 +130,7 @@ app.post("/servers/:id/hooks", async (req, res) => {
 	const secret = oauth.generateToken()
 	await pool.query(
 		"INSERT INTO `hook` (`id`, `name`, `server`, `webhook`, `channel`, `message`, `secret`, `filterEvent`, `filterAction`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-		[id, req.body.name, req.params.id, req.body.webhook, req.body.channel, req.body.message, secret, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction)]
+		[id, req.body.name, req.params.id, req.body.webhook || null, req.body.channel || null, req.body.message || null, secret, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction)]
 	)
 	res.send({success: true, id, secret})
 })
@@ -126,7 +139,7 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
-	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
+	if (!servers) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	const [rows] = await pool.query("SELECT * FROM `hook` WHERE `id` = ?", [req.params.hook])
@@ -136,8 +149,8 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 	if (hook.server != req.params.id) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	await pool.query(
-		"UPDATE `hook` SET `webhook` = ?, `name` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
-		[req.body.webhook, req.body.name, req.body.channel, req.body.message, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction), req.params.hook]
+		"UPDATE `hook` SET `name` = ?, `webhook` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
+		[req.body.name, req.body.webhook || null, req.body.channel || null, req.body.message || null, JSON.stringify(req.body.filterEvent), JSON.stringify(req.body.filterAction), req.params.hook]
 	)
 	res.send({success: true})
 })
@@ -146,7 +159,7 @@ app.delete("/servers/:id/hooks/:hook", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
 	const [rows] = await pool.query("SELECT * FROM `user` WHERE `token` = ?", [req.signedCookies.auth])
-	if (rows.length == 0) return res.status(401).send({success: false, error: "Invalid token cookie"})
+	if (rows.length == 0) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
@@ -165,7 +178,7 @@ app.post("/servers/:id/hooks/:hook/regen", async (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send({success: false, error: "Missing auth cookie"})
 
 	const servers = await oauth.getUserServers(req.signedCookies.auth, pool)
-	if (!servers) return res.status(401).send({success: false, error: "Invalid token cookie"})
+	if (!servers) return res.status(401).send({success: false, error: "Invalid auth cookie"})
 	if (!servers.some(server => server.id == req.params.id)) return res.status(401).send({success: false, error: "Invalid server ID"})
 
 	const [rows] = await pool.query("SELECT * FROM `hook` WHERE `id` = ?", [req.params.hook])
@@ -215,19 +228,20 @@ app.get("/login", async (req, res) => {
 
 	const token = oauth.generateToken()
 	res.cookie("auth", token, {signed: true, secure: true, httpOnly: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
-	res.cookie("avatar", "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".png", {secure: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
+	res.cookie("avatar", "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".webp?size=64", {secure: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
 
 	pool.query(
 		"INSERT INTO `user` (`id`, `token`, `access`, `refresh`, `expires`) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE `token` = ?, `access` = ?, `refresh` = ?, `expires` = ?",
 		[user.id, token, json.access_token, json.refresh_token, Date.now() + json.expires_in * 1000, token, json.access_token, json.refresh_token, Date.now() + json.expires_in * 1000]
 	)
 
-	res.send({token})
+	res.send({token, avatar: "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".webp?size=64"})
 })
 app.get("/logout", (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")
 
 	res.clearCookie("auth", {domain: "." + domain.split(".").slice(-2).join(".")})
+	res.clearCookie("avatar", {domain: "." + domain.split(".").slice(-2).join(".")})
 	res.send({success: true})
 
 	pool.query("DELETE FROM `user` WHERE `token` = ?", [req.signedCookies.auth])

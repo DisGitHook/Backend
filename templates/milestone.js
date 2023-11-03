@@ -6,9 +6,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`closed`)",
+			title: "[{{ repository.name }}] `milestone` (`closed`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]
@@ -17,9 +18,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`created`)",
+			title: "[{{ repository.name }}] `milestone` (`created`)",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -28,9 +30,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`deleted`)",
+			title: "[{{ repository.name }}] `milestone` (`deleted`)",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]
@@ -39,9 +42,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`edited`)",
+			title: "[{{ repository.name }}] `milestone` (`edited`)",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
@@ -50,9 +54,10 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `milestone` (`opened`)",
+			title: "[{{ repository.name }}] `milestone` (`opened`)",
 			url: "{{ repository.html_url }}",
 			color: color("black")
 		}]

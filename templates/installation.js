@@ -5,56 +5,61 @@ module.exports = [
 		action: "created",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				name: "{{ requester.login || sender.login }}",
+				icon_url: "{{ requester.avatar_url || sender.avatar_url }}",
+				url: "{{ requester.html_url || sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name || organization.name }}] Added GitHub app **{{ installation.account.login }}**",
+			url: "{{ repository.html_url || organization.html_url }}",
 			color: color("green")
 		}]
 	},{
 		action: "deleted",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				name: "{{ requester.login || sender.login }}",
+				icon_url: "{{ requester.avatar_url || sender.avatar_url }}",
+				url: "{{ requester.html_url || sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name || organization.name }}] Uninstalled GitHub app **{{ installation.account.login }}**",
+			url: "{{ repository.html_url || organization.html_url }}",
 			color: color("red")
 		}]
 	},{
 		action: "new_permissions_accepted",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				name: "{{ requester.login || sender.login }}",
+				icon_url: "{{ requester.avatar_url || sender.avatar_url }}",
+				url: "{{ requester.html_url || sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`new_permissions_accepted`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name || organization.name }}] Accepted new permissions for GitHub app **{{ installation.account.login }}**",
+			url: "{{ repository.html_url || organization.html_url }}",
+			color: color("gray")
 		}]
 	},{
 		action: "suspend",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				name: "{{ requester.login || sender.login }}",
+				icon_url: "{{ requester.avatar_url || sender.avatar_url }}",
+				url: "{{ requester.html_url || sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`suspend`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name || organization.name }}] Suspended GitHub app **{{ installation.account.login }}**",
+			url: "{{ repository.html_url || organization.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "unsuspend",
 		embeds: [{
 			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				name: "{{ requester.login || sender.login }}",
+				icon_url: "{{ requester.avatar_url || sender.avatar_url }}",
+				url: "{{ requester.html_url || sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `installation` (`unsuspend`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name || organization.name }}] Unsuspended GitHub app **{{ installation.account.login }}**",
+			url: "{{ repository.html_url || organization.html_url }}",
+			color: color("green")
 		}]
 	}
 ]

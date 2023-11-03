@@ -6,10 +6,11 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `commit_comment` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] New comment on `{{ comment.commit_id }}`",
+			url: "{{ comment.html_url }}",
 			color: color("green")
 		}]
 	}

@@ -6,7 +6,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** {{ workflow_job.conclusion }}",
 			url: "{{ workflow_job.html_url }}",
@@ -17,7 +18,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** {{ workflow_job.status }}",
 			url: "{{ workflow_job.html_url }}",
@@ -28,7 +30,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** queued",
 			url: "{{ workflow_job.html_url }}",
@@ -39,7 +42,8 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
 			title: "[{{ repository.name }}] Workflow **{{ workflow_job.name }}** waiting",
 			url: "{{ workflow_job.html_url }}",

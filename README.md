@@ -4,6 +4,8 @@ This repository contains the backend code for the DisGitHook project.
 
 It contains the API for the website and the code for handling webhooks.
 
+[![Discord](https://discord.com/api/v10/guilds/1168642348851396658/widget.png?style=banner4)](https://discord.gg/ADP7rn6Hz8)
+
 ## API routes
 
 - `GET` /
@@ -30,3 +32,6 @@ Exceptions:
 - `registry_package` event has no templates in favor of the `package` event as recommended by GitHub
 - `repository_vulnerability_alert` because it is deprecated in favor of `dependabot_alert` as recommended by GitHub
 - `team_add` because the `added_to_repository` action from `team` is the same
+- `repository_dispatch` because it is not used for webhooks
+- `requested_action` and `rerequested` actions of the `check_run` event because they are not used for webhooks
+- `requested` and `rerequested` actions of the `check_suite` event because they are not used for webhooks

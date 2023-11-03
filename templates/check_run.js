@@ -6,44 +6,24 @@ module.exports = [
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`completed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] **{{ check_run.name }}** check run completed {{ check_run.conclusion }}",
+			url: "{{ check_run.html_url }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "created",
 		embeds: [{
 			author: {
 				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
+				icon_url: "{{ sender.avatar_url }}",
+				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] **{{ check_run.name }}** check run {{ check_run.status }}",
+			url: "{{ check_run.html_url }}",
 			color: color("green")
-		}]
-	},{
-		action: "requested_action",
-		embeds: [{
-			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
-			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`requested_action`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
-		}]
-	},{
-		action: "rerequested",
-		embeds: [{
-			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}"
-			},
-			title: "[{{ repository.name }}:{{ repository.default_branch }}] `check_run` (`rerequested`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
 		}]
 	}
 ]
