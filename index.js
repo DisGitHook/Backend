@@ -97,8 +97,8 @@ app.get("/servers/:id/hooks", async (req, res) => {
 	const [rows] = await pool.query("SELECT * FROM `hook` WHERE `server` = ?", [req.params.id])
 	const hooks = rows.map(hook => ({
 		id: hook.id,
-		secret: hook.secret,
 		name: hook.name,
+		secret: hook.secret,
 		webhook: hook.webhook,
 		channel: hook.channel,
 		message: hook.message,
@@ -140,6 +140,9 @@ app.post("/servers/:id/hooks", async (req, res) => {
 		id = oauth.generateToken(8)
 	}
 
+	if (!req.body.filterEvent || !Array.isArray(req.body.filterEvent)) req.body.filterEvent = req.body.filterEvent ? [req.body.filterEvent] : null
+	if (!req.body.filterAction || !Array.isArray(req.body.filterAction)) req.body.filterAction = req.body.filterAction ? [req.body.filterAction] : null
+
 	const secret = oauth.generateToken()
 	await pool.query(
 		"INSERT INTO `hook` (`id`, `name`, `server`, `webhook`, `channel`, `message`, `secret`, `filterEvent`, `filterAction`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -161,8 +164,8 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 	const hook = rows[0]
 	if (hook.server != req.params.id) return res.status(401).send({success: false, error: "Invalid server ID"})
 
-	if (!req.body.filterEvent || !Array.isArray(req.body.filterEvent)) req.body.filterEvent = req.body.filterEvent ? [req.body.filterEvent] : []
-	if (!req.body.filterAction || !Array.isArray(req.body.filterAction)) req.body.filterAction = req.body.filterAction ? [req.body.filterAction] : []
+	if (!req.body.filterEvent || !Array.isArray(req.body.filterEvent)) req.body.filterEvent = req.body.filterEvent ? [req.body.filterEvent] : null
+	if (!req.body.filterAction || !Array.isArray(req.body.filterAction)) req.body.filterAction = req.body.filterAction ? [req.body.filterAction] : null
 
 	await pool.query(
 		"UPDATE `hook` SET `name` = ?, `webhook` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
@@ -281,10 +284,12 @@ const hookFunc = async (req, res) => {
 	if (hook.filterEvent && !JSON.parse(hook.filterEvent).includes(githubEvent)) return res.status(202).send({success: true, info: "Event " + encode(githubEvent) + " is disabled in settings for this hook"})
 
 	const data = req.body
-	console.log(data)
+	if (typeof data != "object" || Array.isArray(data)) return res.status(500).send({success: false, error: "Invalid JSON in body"})
+
 	const action = data.action
 	if (hook.filterAction && !JSON.parse(hook.filterAction).includes(action)) return res.status(202).send({success: true, info: "Action " + encode(action) + " is disabled in settings for this hook"})
 
+	console.log(data)
 	let message = hook.message
 	if (!message) {
 		const githubEventSani = githubEvent.replace(/[^a-z0-9_]/gi, "")
