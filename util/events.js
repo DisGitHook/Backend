@@ -48,7 +48,7 @@ module.exports = {
 	"push": [],
 	"release": ["created", "deleted", "edited", "prereleased", "published", "released", "unpublished"],
 	"repository_advisory": ["published", "reported"],
-	"repository": ["archived", "created", "deleted", "edited", "privatized", "publicized", "renamed", "transferred", "unarchived"],
+	"repository": ["archived", "created", "edited", "privatized", "publicized", "renamed", "transferred", "unarchived"],
 	"repository_import": [],
 	"repository_ruleset": ["created", "deleted", "edited"],
 	"secret_scanning_alert": ["created", "reopened", "resolved", "revoked"],

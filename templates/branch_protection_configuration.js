@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `branch_protection_configuration` (`disabled`)",
+			title: "[{{ repository.name }}] All branch protection rules disabled",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("darkRed")
 		}]
 	},{
 		action: "enabled",
@@ -21,9 +21,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `branch_protection_configuration` (`enabled`)",
+			title: "[{{ repository.name }}] All branch protection rules enabled",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("darkGreen")
 		}]
 	}
 ]

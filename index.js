@@ -101,15 +101,28 @@ app.get("/servers/:id/hooks", async (req, res) => {
 		name: hook.name,
 		webhook: hook.webhook,
 		channel: hook.channel,
-		//message: hook.message,
+		message: hook.message,
 		messageUrl: "https://embed.tomatenkuchen.com/?dgh=1&data=" + Buffer.from(encodeURIComponent(JSON.stringify(hook.message))).toString("base64"),
 		filterEvent: hook.filterEvent,
 		filterAction: hook.filterAction
 	}))
+
+	const realServer = bot.guilds.cache.get(req.params.id)
+	if (!realServer) return res.status(404).send({success: false, error: "Server not found"})
+
+	const channels = realServer.channels.cache
+		.filter(c => c.type == Discord.ChannelType.GuildText || c.type == Discord.ChannelType.GuildAnnouncement || c.type == Discord.ChannelType.GuildVoice || c.type == Discord.ChannelType.GuildStageVoice)
+		.map(c => ({
+			id: c.id,
+			name: c.name,
+			type: c.type
+		}))
+
 	res.send({
-		name: bot.guilds.cache.get(req.params.id)?.name,
+		name: realServer.name,
 		hooks,
-		events
+		events,
+		channels
 	})
 })
 
@@ -147,6 +160,9 @@ app.post("/servers/:id/hooks/:hook", async (req, res) => {
 
 	const hook = rows[0]
 	if (hook.server != req.params.id) return res.status(401).send({success: false, error: "Invalid server ID"})
+
+	if (!req.body.filterEvent || !Array.isArray(req.body.filterEvent)) req.body.filterEvent = req.body.filterEvent ? [req.body.filterEvent] : []
+	if (!req.body.filterAction || !Array.isArray(req.body.filterAction)) req.body.filterAction = req.body.filterAction ? [req.body.filterAction] : []
 
 	await pool.query(
 		"UPDATE `hook` SET `name` = ?, `webhook` = ?, `channel` = ?, `message` = ?, `filterEvent` = ?, `filterAction` = ? WHERE `id` = ?",
@@ -189,6 +205,7 @@ app.post("/servers/:id/hooks/:hook/regen", async (req, res) => {
 
 	const secret = oauth.generateToken()
 	await pool.query("UPDATE `hook` SET `secret` = ? WHERE `id` = ?", [secret, req.params.hook])
+
 	res.send({success: true, secret})
 })
 
@@ -216,15 +233,13 @@ app.get("/login", async (req, res) => {
 		}
 	})
 	const json = await fetched.json()
-	console.log(json)
 	if (json.error) return res.status(500).send({success: false, error: json.error + ": " + json.error_description})
 
-	const user = await oauth.getUser(json.access_token).catch(err => {
-		console.log(err)
+	const user = await oauth.getUser(json.access_token).catch(e => {
+		console.log(e)
 		res.status(500).send("Error getting user data")
 	})
 	if (user instanceof Error) return
-	console.log(user)
 
 	const token = oauth.generateToken()
 	res.cookie("auth", token, {signed: true, secure: true, httpOnly: true, expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4), domain: "." + domain.split(".").slice(-2).join(".")})
@@ -235,7 +250,7 @@ app.get("/login", async (req, res) => {
 		[user.id, token, json.access_token, json.refresh_token, Date.now() + json.expires_in * 1000, token, json.access_token, json.refresh_token, Date.now() + json.expires_in * 1000]
 	)
 
-	res.send({token, avatar: "https://cdn.discordapp.com/avatars/" + user.id + "/" + user.avatar + ".webp?size=64"})
+	res.send({success: true})
 })
 app.get("/logout", (req, res) => {
 	if (!req.signedCookies.auth) return res.status(401).send("Missing auth cookie")

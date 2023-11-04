@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `watch` (`started`)",
+			title: "[{{ repository.name }}] Started watching",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("gray")
 		}]
 	}
 ]

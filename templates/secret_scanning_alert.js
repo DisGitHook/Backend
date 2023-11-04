@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `secret_scanning_alert` (`created`)",
-			url: "{{ repository.html_url }}",
-			color: color("green")
+			title: "[{{ repository.name }}] Detected secret **{{ alert.secret_type }}**",
+			url: "{{ alert.html_url }}",
+			color: color("darkRed")
 		}]
 	},{
 		action: "reopened",
@@ -21,9 +21,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `secret_scanning_alert` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Secret scanning alert **#{{ alert.number }}** reopened",
+			url: "{{ alert.html_url }}",
+			color: color("red")
 		}]
 	},{
 		action: "resolved",
@@ -33,8 +33,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `secret_scanning_alert` (`resolved`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Secret scanning alert resolved as **{{ alert.resolution }}**",
+			url: "{{ alert.html_url }}",
+			description: "{{ alert.resolution_comment }}",
 			color: color("green")
 		}]
 	},{
@@ -45,9 +46,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `secret_scanning_alert` (`revoked`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Secret of alert **#{{ alert.number }}** revoked",
+			url: "{{ alert.html_url }}",
+			color: color("green")
 		}]
 	}
 ]

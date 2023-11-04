@@ -37,3 +37,13 @@ Exceptions:
 - `requested` and `rerequested` actions of the `check_suite` event because they are not used for webhooks
 - `project_card`, `project` and `project_column` have no templates due to being deprecated (Projects "Classic")
 - `secret_scanning_alert_location` as it only triggers on issues `secret_scanning_alert` already triggers on
+- `deleted` action of `repository` as it is not used for webhooks
+
+## Variables
+
+- Top level: `{{variable}}` or `{{ variable }}`
+- Below: `{{ variable.data }}`
+- Array length: `{{ count(variable.data) }}`
+- Ternary: `{{ variable.data ? Yes : No }}`
+- OR: `{{ variable.data || No }}`
+- Double spaces are removed

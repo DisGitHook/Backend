@@ -9,7 +9,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `branch_protection_rule` (`created`)",
+			title: "[{{ repository.name }}] Branch protection rule **{{ branch_protection_rule.name }}** created",
 			url: "{{ repository.html_url }}",
 			color: color("green")
 		}]
@@ -21,7 +21,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `branch_protection_rule` (`edited`)",
+			title: "[{{ repository.name }}] Branch protection rule **{{ branch_protection_rule.name }}** edited",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
@@ -33,7 +33,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `branch_protection_rule` (`deleted`)",
+			title: "[{{ repository.name }}] Branch protection rule **{{ branch_protection_rule.name }}** deleted",
 			url: "{{ repository.html_url }}",
 			color: color("red")
 		}]

@@ -9,9 +9,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`archived`)",
+			title: "[{{ repository.name }}] Repository archived",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("yellow")
 		}]
 	},{
 		action: "created",
@@ -21,21 +21,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`created`)",
+			title: "[{{ repository.name }}] Repository created",
 			url: "{{ repository.html_url }}",
 			color: color("green")
-		}]
-	},{
-		action: "deleted",
-		embeds: [{
-			author: {
-				name: "{{ sender.login }}",
-				icon_url: "{{ sender.avatar_url }}",
-				url: "{{ sender.html_url }}"
-			},
-			title: "[{{ repository.name }}] `repository` (`deleted`)",
-			url: "{{ repository.html_url }}",
-			color: color("red")
 		}]
 	},{
 		action: "edited",
@@ -45,7 +33,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`edited`)",
+			title: "[{{ repository.name }}] Repository edited",
 			url: "{{ repository.html_url }}",
 			color: color("cyan")
 		}]
@@ -57,9 +45,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`privatized`)",
+			title: "[{{ repository.name }}] Repository privatized",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("blue")
 		}]
 	},{
 		action: "publicized",
@@ -69,9 +57,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`publicized`)",
+			title: "[{{ repository.name }}] Repository publicized",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("blue")
 		}]
 	},{
 		action: "renamed",
@@ -81,9 +69,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`renamed`)",
+			title: "[{{ repository.name }}] Repository renamed from **{{ changes.repository.name.from }}**",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("cyan")
 		}]
 	},{
 		action: "transferred",
@@ -93,9 +81,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`transferred`)",
+			title: "[{{ repository.name }}] Repository transferred from **{{ changes.owner.from.organization.login || changes.owner.from.user.login }}**",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("cyan")
 		}]
 	},{
 		action: "unarchived",
@@ -105,9 +93,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `repository` (`unarchived`)",
+			title: "[{{ repository.name }}] Repository unarchived",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("green")
 		}]
 	}
 ]
