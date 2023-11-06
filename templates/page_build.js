@@ -10,7 +10,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] Page build {{ build.status }}",
 			url: "{{ build.url }}",
-			color: color("black")
+			color: color("magenta")
 		}]
 	}
 ]

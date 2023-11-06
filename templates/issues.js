@@ -9,9 +9,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`assigned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** assigned to **{{ assignee.login }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "closed",
@@ -21,9 +22,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`closed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** closed",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("green")
 		}]
 	},{
 		action: "deleted",
@@ -33,8 +35,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** deleted",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
 			color: color("red")
 		}]
 	},{
@@ -45,9 +48,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`demilestoned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** removed from milestone **{{ milestone.title }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "edited",
@@ -57,8 +61,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** edited",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
 			color: color("cyan")
 		}]
 	},{
@@ -69,8 +74,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`labeled`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Label {{ label.name }} added to issue **#{{ issue.number }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
 			color: color("cyan")
 		}]
 	},{
@@ -81,9 +87,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`locked`)",
-			url: "{{ repository.html_url }}",
-			color: color("gray")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** locked",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "milestoned",
@@ -93,9 +100,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`milestoned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** added to milestone **{{ milestone.title }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "opened",
@@ -105,9 +113,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`opened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** opened",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("blue")
 		}]
 	},{
 		action: "pinned",
@@ -117,9 +126,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`pinned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** pinned",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "reopened",
@@ -129,9 +139,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** reopened",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("red")
 		}]
 	},{
 		action: "transferred",
@@ -141,9 +152,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`transferred`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** transferred",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("gray")
 		}]
 	},{
 		action: "unassigned",
@@ -153,9 +165,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`unassigned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Assignee removed from issue **#{{ issue.number }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "unlabeled",
@@ -165,9 +178,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`unlabeled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Label {{ label.name }} removed from issue **#{{ issue.number }}**",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("cyan")
 		}]
 	},{
 		action: "unlocked",
@@ -177,9 +191,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`unlocked`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** unlocked",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("magenta")
 		}]
 	},{
 		action: "unpinned",
@@ -189,9 +204,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `issues` (`unpinned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Issue **#{{ issue.number }}** unpinned",
+			url: "{{ issue.html_url }}",
+			description: "{{ issue.title }}",
+			color: color("magenta")
 		}]
 	}
 ]

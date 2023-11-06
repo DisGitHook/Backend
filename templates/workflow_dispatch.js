@@ -8,9 +8,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `workflow_dispatch`",
+			title: "[{{ repository.name }}] Workflow **{{ workflow }}** manually run",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("yellow")
 		}]
 	}
 ]

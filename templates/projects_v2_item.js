@@ -1,6 +1,6 @@
 const color = require("../util/color.js")
 
-module.exports = [
+module.exports = [ // TODO: Fetch project name & item data from GitHub using projects_v2_item.project_node_id / projects_v2_item.content_node_id
 	{
 		action: "archived",
 		embeds: [{
@@ -9,9 +9,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`archived`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project item archived",
+			color: color("gray")
 		}]
 	},{
 		action: "converted",
@@ -21,9 +20,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`converted`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project item converted",
+			color: color("green")
 		}]
 	},{
 		action: "created",
@@ -33,8 +31,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`created`)",
-			url: "{{ repository.html_url }}",
+			title: "Project item created",
 			color: color("green")
 		}]
 	},{
@@ -45,8 +42,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`deleted`)",
-			url: "{{ repository.html_url }}",
+			title: "Project item deleted",
 			color: color("red")
 		}]
 	},{
@@ -57,8 +53,7 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "Project item edited",
 			color: color("cyan")
 		}]
 	},{
@@ -69,9 +64,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`reordered`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project item reordered",
+			color: color("cyan")
 		}]
 	},{
 		action: "restored",
@@ -81,9 +75,8 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `projects_v2_item` (`restored`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "Project item restored",
+			color: color("magenta")
 		}]
 	}
 ]

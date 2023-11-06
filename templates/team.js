@@ -59,7 +59,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] Team **{{ team.name }}** removed",
 			url: "{{ repository.html_url }}",
-			color: color("black")
+			color: color("red")
 		}]
 	}
 ]

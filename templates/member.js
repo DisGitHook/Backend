@@ -44,7 +44,7 @@ module.exports = [
 			thumbnail: {
 				url: "{{ member.avatar_url }}"
 			},
-			color: color("black")
+			color: color("red")
 		}]
 	}
 ]

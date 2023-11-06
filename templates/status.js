@@ -10,7 +10,7 @@ module.exports = [
 			},
 			title: "[{{ repository.name }}] Status of commit changed to {{ state }}",
 			url: "{{ target_url || commit.commit.tree.url }}",
-			color: color("black")
+			color: color("magenta")
 		}]
 	}
 ]

@@ -9,9 +9,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`assigned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** assigned to **{{ assignee.login }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "auto_merge_disabled",
@@ -21,9 +22,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`auto_merge_disabled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Auto merge disabled for **{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("red")
 		}]
 	},{
 		action: "auto_merge_enabled",
@@ -33,9 +35,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`auto_merge_enabled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Auto merge enabled for **{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("green")
 		}]
 	},{
 		action: "closed",
@@ -45,9 +48,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`closed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** closed",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("red")
 		}]
 	},{
 		action: "converted_to_draft",
@@ -57,9 +61,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`converted_to_draft`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** converted to draft",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("gray")
 		}]
 	},{
 		action: "demilestoned",
@@ -69,9 +74,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`demilestoned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** removed from milestone **{{ milestone.title }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "dequeued",
@@ -81,9 +87,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`dequeued`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** removed from queue",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "edited",
@@ -93,8 +100,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`edited`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** edited",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
 			color: color("cyan")
 		}]
 	},{
@@ -105,9 +113,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`enqueued`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** added to queue",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "labeled",
@@ -117,8 +126,9 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`labeled`)",
-			url: "{{ repository.html_url }}",
+			title: "[{{ repository.name }}] Label {{ label.name }} added to pull request **#{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
 			color: color("cyan")
 		}]
 	},{
@@ -129,9 +139,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`locked`)",
-			url: "{{ repository.html_url }}",
-			color: color("gray")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** locked",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("magenta")
 		}]
 	},{
 		action: "milestoned",
@@ -141,9 +152,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`milestoned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** added to milestone **{{ milestone.title }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "opened",
@@ -153,9 +165,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`opened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** opened",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("green")
 		}]
 	},{
 		action: "ready_for_review",
@@ -165,9 +178,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`ready_for_review`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** marked as ready for review",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("gray")
 		}]
 	},{
 		action: "reopened",
@@ -177,9 +191,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`reopened`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** reopened",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("green")
 		}]
 	},{
 		action: "review_request_removed",
@@ -189,9 +204,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`review_request_removed`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** review request removed",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("magenta")
 		}]
 	},{
 		action: "review_requested",
@@ -201,9 +217,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`review_requested`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request review requested on **#{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("magenta")
 		}]
 	},{
 		action: "synchronize",
@@ -213,9 +230,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`synchronize`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** head branch updated",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("gray")
 		}]
 	},{
 		action: "unassigned",
@@ -225,9 +243,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`unassigned`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Assignee removed from pull request **#{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "unlabeled",
@@ -237,9 +256,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`unlabeled`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Label {{ label.name }} removed from pull request **#{{ pull_request.number }}**",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("cyan")
 		}]
 	},{
 		action: "unlocked",
@@ -249,9 +269,10 @@ module.exports = [
 				icon_url: "{{ sender.avatar_url }}",
 				url: "{{ sender.html_url }}"
 			},
-			title: "[{{ repository.name }}] `pull_request` (`unlocked`)",
-			url: "{{ repository.html_url }}",
-			color: color("black")
+			title: "[{{ repository.name }}] Pull request **#{{ pull_request.number }}** unlocked",
+			url: "{{ pull_request.html_url }}",
+			description: "{{ pull_request.title}}",
+			color: color("magenta")
 		}]
 	}
 ]

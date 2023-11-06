@@ -22,7 +22,7 @@ module.exports = [
 			},
 			title: "[{{ organization.name }}] **{{ member.user.login }}** added to organization",
 			url: "{{ organization.html_url }}",
-			color: color("black")
+			color: color("green")
 		}]
 	},{
 		action: "member_invited",
@@ -34,7 +34,7 @@ module.exports = [
 			},
 			title: "[{{ organization.name }}] **{{ invitation.login || invitation.email }}** invited to organization",
 			url: "{{ organization.html_url }}",
-			color: color("black")
+			color: color("gray")
 		}]
 	},{
 		action: "member_removed",
@@ -46,7 +46,7 @@ module.exports = [
 			},
 			title: "[{{ organization.name }}] **{{ member.user.login }}** removed from organization",
 			url: "{{ organization.html_url }}",
-			color: color("black")
+			color: color("red")
 		}]
 	},{
 		action: "renamed",
@@ -58,7 +58,7 @@ module.exports = [
 			},
 			title: "Organization renamed from **{{ changes.login.from }}** to **{{ organization.name }}**",
 			url: "{{ organization.html_url }}",
-			color: color("black")
+			color: color("cyan")
 		}]
 	}
 ]
